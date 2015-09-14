@@ -1,5 +1,8 @@
 auto-save-list/
 elpa/
+recentf
+projectile-bookmarks.eld
+eshell/
 .saves/
 *~
 

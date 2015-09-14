@@ -20,9 +20,12 @@
 (require 'use-package)
 
 (require 'my-gen)
+(require 'my-projects)
 (require 'my-eyecandy)
 (require 'my-evil)
 (require 'my-elisp)
 (require 'my-dired)
 (require 'my-ibuffer)
-
+(require 'my-magit)
+(require 'my-leader-keys)
+(require 'my-helm)

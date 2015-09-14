@@ -3,6 +3,7 @@
   :ensure evil
   :demand evil
   :init
+  (setq evil-want-C-w-in-emacs-state t)
   (setq evil-want-C-u-scroll t)
   :config
   (progn
@@ -12,7 +13,12 @@
     (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
     (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
     (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-    (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)))
+    (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right))
+    ;; Easy toggle to emacs state.
+    (define-key evil-normal-state-map "\C-\\" 'evil-emacs-state)
+    (define-key evil-insert-state-map "\C-\\" 'evil-emacs-state)
+    (define-key evil-visual-state-map "\C-\\" 'evil-emacs-state)
+    (define-key evil-emacs-state-map "\C-\\" 'evil-exit-emacs-state))
 
 (use-package evil-leader
   :commands (evil-leader-mode)

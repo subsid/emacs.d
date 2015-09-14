@@ -3,7 +3,7 @@
   :ensure ibuffer
   :config
   (progn
-     (eval-after-load 'evil
+     (after 'evil
        (evil-set-initial-state 'ibuffer-mode 'normal)
        (evil-define-key 'normal ibuffer-mode-map
          (kbd "m") 'ibuffer-mark-forward
