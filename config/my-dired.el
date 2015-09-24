@@ -13,7 +13,7 @@
     (dired-up-directory)
     (kill-buffer old)))
 
-(eval-after-load 'dired
+(after 'dired
   '(progn
      (evil-define-key 'normal dired-mode-map "h" 'my-dired-up-directory)
      (evil-define-key 'normal dired-mode-map "l" 'dired-find-alternate-file)

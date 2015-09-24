@@ -5,7 +5,20 @@
 (visual-line-mode 1)
 (setq require-final-newline t)
 (tool-bar-mode -1)
-(linum-mode 1)
+(global-linum-mode 1)
+(scroll-bar-mode -1)
+
+(use-package nlinum 
+  :ensure t
+  :config
+  (progn
+    ;; Preset width nlinum
+    (add-hook 'nlinum-mode-hook
+	      (lambda ()
+		(setq nlinum--width
+		      (length (number-to-string
+			       (count-lines (point-min) (point-max)))))))))
+(setq linum-format "%3d ")
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -17,17 +30,24 @@
 (setq auto-save-file-name-transforms
       `((".*" ,my-auto-save-folder t)))
 
-;; Org Agenda DIR
-(setq org-agenda-files '("~/workspace/notes/"))
-(setq org-directory "~/workspace/notes/")
-(setq org-default-notes-file (concat org-directory "notes.org"))
-(define-key global-map "\C-cc" 'org-capture)
-
 ;; from <https://github.com/bling/dotemacs/>
 (defmacro after (feature &rest body)
   "After FEATURE is loaded, evaluate BODY."
   (declare (indent defun))
   `(eval-after-load ,feature
      '(progn ,@body)))
+
+;; Zoom in/out of one buffer.
+(use-package zoom-window
+  :ensure zoom-window
+  :config
+  (global-set-key (kbd "C-x C-o") 'zoom-window-zoom)
+  (setq zoom-window-mode-line-color "DarkGreen"))
+
+;; Ace jump, jump around in a buffer
+(use-package ace-jump
+  :ensure ace-jump-mode) 
+
+(setq x-select-enable-clipboard nil)
 
 (provide 'my-gen)

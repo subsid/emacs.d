@@ -7,6 +7,7 @@
   :config
   (progn
     (setq helm-buffers-fuzzy-matching t)
+    (setq helm-M-x-fuzzy-match t)
     (setq helm-split-window-default-side (quote other))
     (setq helm-split-window-in-side-p nil)
     (defun my-helm-in-ido (buffer)
@@ -54,14 +55,7 @@
       (progn
         ;; Don't start searching for the thing at point by default.
         ;; Let me type it.
-        (setq helm-swoop-pre-input-function (lambda () ()))
-        (after 'evil
-          (define-key evil-normal-state-map (kbd "SPC l")   'helm-swoop))))
-
-
-    (after 'evil-leader
-        (evil-leader/set-key "b" 'helm-mini)
-        (evil-leader/set-key "i" 'helm-imenu))
+        (setq helm-swoop-pre-input-function (lambda () ()))))
 
 
     (after 'flycheck

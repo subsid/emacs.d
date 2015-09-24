@@ -27,5 +27,9 @@
 (require 'my-dired)
 (require 'my-ibuffer)
 (require 'my-magit)
-(require 'my-leader-keys)
 (require 'my-helm)
+(require 'my-org)
+(require 'my-auto-complete)
+(require 'my-coffee)
+(require 'my-leader-keys)
+
