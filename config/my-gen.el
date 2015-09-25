@@ -50,4 +50,9 @@
 
 (setq x-select-enable-clipboard nil)
 
+
+;;settins for gpg stuff
+(setenv "PATH" (concat "/usr/local/bin" path-separator (getenv "PATH")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (provide 'my-gen)

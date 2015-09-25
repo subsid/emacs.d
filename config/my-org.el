@@ -2,10 +2,15 @@
 
 (use-package org
   :commands (org-mode org-capture org-agenda orgtbl-mode)
+  :init
+  (setq org-directory "/Users/siddharth/Dropbox/notes")
   :demand t
   :config
-  (use-package org-habit)
-  (use-package org-bullets)
+  (use-package org-bullets
+    :ensure t)
+  (setq org-agenda-files (list "/Users/siddharth/Dropbox/notes/life.org.gpg"))
+  (setq org-archive-location "%s_archive::datetree/* Archived Tasks")
+  (setq org-default-notes-file (concat org-directory "/life.org.gpg"))
   (add-to-list 'org-modules 'org-habit)
   (add-to-list 'org-modules 'org-bullets)
   (setq org-export-coding-system 'utf-8)
@@ -18,10 +23,6 @@
 	  "* %?\n %t"
   	  )))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (setq org-agenda-files (list "/Users/siddharth/Dropbox/notes"))
-  (setq org-directory "/Users/siddharth/Dropbox/notes")
-  (setq org-archive-location "%s_archive::datetree/* Archived Tasks")
-  (setq org-default-notes-file (concat org-directory "/life.org"))
   (define-key global-map "\C-cl" 'org-store-link)
   (setq org-log-done 'time)
   (setq org-clock-persist 'history)
