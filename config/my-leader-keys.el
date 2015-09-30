@@ -14,6 +14,7 @@
   "f" 'ido-find-file
   "k" 'ido-kill-buffer
   "d" 'neotree-toggle
+  "c" 'org-decrypt-entry
   "e" 'pp-eval-last-sexp
   "b" 'helm-mini
   "x" 'helm-M-x
