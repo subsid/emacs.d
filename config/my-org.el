@@ -13,19 +13,20 @@
   (setq org-archive-location "%s_archive.gpg::datetree/")
   (setq org-default-notes-file (concat org-directory "/life.org.gpg"))
   (setq org-journal-dir (concat org-directory "/journal"))
-  (setq org-journal-enable-encryption t)
   (add-to-list 'org-modules 'org-habit)
   (add-to-list 'org-modules 'org-bullets)
   (add-to-list 'org-modules 'org-crypt)
   (setq org-export-coding-system 'utf-8)
   (setq org-capture-templates
   	'(("b" ;hotkey
-  	  "Tidbit" ; Random Stuff
-  	  entry ; type
-  	  ;heading type and title
-  	  (file+headline org-default-notes-file "Inbox")
-	  "* %?\n %t"
-  	  )))
+	   "Tidbit" ; Random Stuff
+	   entry ; type
+					;heading type and title
+	   (file+headline org-default-notes-file "Inbox")
+	   "* %?\n %t")
+	  ("j" "Journal" entry (file+datetree org-default-notes-file)
+	   "* %?\nEntered on %U\n")))
+
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)

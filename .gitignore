@@ -4,5 +4,7 @@ recentf
 projectile-bookmarks.eld
 eshell/
 .saves/
+*.dat
+bookmarks
 *~
 
