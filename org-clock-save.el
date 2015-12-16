@@ -1,2 +1,2 @@
-;; org-persist.el - siddharths-MacBook-Pro.local at <2015-10-08 Thu 09:20>
-(setq stored-clock-history '(("/Users/siddharth/Dropbox/notes/life.org.gpg_archive.gpg" . 7819) ("/Users/siddharth/Dropbox/notes/life.org.gpg" . 17107) ("/Users/siddharth/Dropbox/notes/life.org.gpg" . 15841) ("/Users/siddharth/Dropbox/notes/life.org.gpg" . 13165) ("/Users/siddharth/Dropbox/notes/life.org.gpg" . 15529)))
+;; org-persist.el - siddharths-MacBook-Pro.local at <2015-12-13 Sun 13:09>
+(setq stored-clock-history '(("/Users/siddharth/Dropbox/notes/inbox.org" . 7508) ("/Users/siddharth/Dropbox/notes/life.org" . 3434) ("/Users/siddharth/Dropbox/notes/books.org" . 2300) ("/Users/siddharth/Dropbox/notes/books.org" . 2566) ("/Users/siddharth/Dropbox/notes/books.org" . 2761)))

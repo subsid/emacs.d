@@ -2,6 +2,7 @@
       inhibit-startup-echo-area-message t
       inhibit-startup-message t)
 
+(setq org-M-RET-may-split-line nil)
 (visual-line-mode 1)
 (setq require-final-newline t)
 (tool-bar-mode -1)
@@ -45,13 +46,15 @@
   (setq zoom-window-mode-line-color "DarkGreen"))
 
 ;; Ace jump, jump around in a buffer
-(use-package ace-jump
-  :ensure ace-jump-mode) 
+(use-package ace-jump-mode
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c SPC") 'ace-jump-mode)) 
 
 (setq x-select-enable-clipboard nil)
 
 ;;settins for gpg stuff
-(setenv "PATH" (concat "/usr/local/bin" path-separator (getenv "PATH")))
+(setenv "PATH" (concat "/usr/local/bin" path-separator "/usr/texbin" path-separator (getenv "PATH")))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
 (setq mac-command-modifier 'control)
