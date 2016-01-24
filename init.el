@@ -10,6 +10,7 @@
 (require 'package)
 
 (setq package-enable-at-startup nil)
+(setq use-package-always-ensure t)
 
 ;; Activate installed packages
 (package-initialize)
@@ -38,7 +39,25 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(org-agenda-custom-commands
+   (quote
+    (("x" "custom agenda view"
+      ((agenda "" nil)
+       (tags "TODO=\"INPROGRESS\"" nil)
+       (tags "TODO=\"TODO\"+SCHEDULED=\"\"" nil))
+      nil nil)
+     ("h" "Daily habits"
+      ((agenda "" nil))
+      ((org-agenda-show-log t)
+       (org-agenda-ndays 7)
+       (org-agenda-log-mode-items
+	(quote
+	 (state)))
+       (org-agenda-skip-function
+	(quote
+	 (org-agenda-skip-entry-if
+	  (quote notregexp)
+	  ":daily:")))))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

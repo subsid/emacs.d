@@ -10,6 +10,7 @@
   (use-package org-bullets
     :ensure t)
   (setq org-agenda-files (list "/Users/siddharth/Dropbox/notes/life.org"
+                               "/Users/siddharth/Dropbox/notes/learning.org"
                                "/Users/siddharth/Dropbox/notes/books.org"
                                "/Users/siddharth/Dropbox/notes/inbox.org"
                                "/Users/siddharth/Dropbox/notes/work.org"))
@@ -55,6 +56,24 @@
             (org-agenda-skip-function '(org-agenda-skip-entry-if 'notregexp ":daily:"))))
           ;; other commands here
           )))
+
+;; Collapse everything except current tab.
+(defun org-show-current-heading-tidily ()
+  (interactive)  ;Inteactive
+  "Show next entry, keeping other entries closed."
+  (if (save-excursion (end-of-line) (outline-invisible-p))
+      (progn (org-show-entry) (show-children))
+    (outline-back-to-heading)
+    (unless (and (bolp) (org-on-heading-p))
+      (org-up-heading-safe)
+      (hide-subtree)
+      (error "Boundary reached"))
+    (org-overview)
+    (org-reveal t)
+    (org-show-entry)
+    (show-children)))
+
+(global-set-key "\M-=" 'org-show-current-heading-tidily)
 
 (provide 'my-org)
 

@@ -1,11 +1,3 @@
-(use-package dired-x
-  :init
-  (progn
-    (defun my-load-dired-x ()
-       "Load dired-x. For use on dired-load-hook"
-       (load "dired-x"))
-    (add-hook 'dired-load-hook 'my-load-dired-x)))
-
 (defun my-dired-up-directory ()
   "Take dired up one directory, but behave like dired-find-alternate-file"
   (interactive)
@@ -15,6 +7,10 @@
 
 (after 'dired
   '(progn
+     (defun my-load-dired-x ()
+       "Load dired-x. For use on dired-load-hook"
+       (load "dired-x"))
+     (add-hook 'dired-load-hook 'my-load-dired-x)
      (evil-define-key 'normal dired-mode-map "h" 'my-dired-up-directory)
      (evil-define-key 'normal dired-mode-map "l" 'dired-find-alternate-file)
      (evil-define-key 'normal dired-mode-map "o" 'dired-sort-toggle-or-edit)

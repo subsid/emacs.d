@@ -8,6 +8,8 @@
 (tool-bar-mode -1)
 (global-linum-mode 1)
 (scroll-bar-mode -1)
+;; treats camelCase as multiple words
+(global-subword-mode 1)
 
 (use-package nlinum 
   :ensure t
@@ -47,9 +49,7 @@
 
 ;; Ace jump, jump around in a buffer
 (use-package ace-jump-mode
-  :ensure t
-  :config
-  (global-set-key (kbd "C-c SPC") 'ace-jump-mode)) 
+  :bind ("C-," . ace-jump-mode))
 
 (setq x-select-enable-clipboard nil)
 
@@ -59,6 +59,19 @@
 
 (setq mac-command-modifier 'control)
 (setq mac-control-modifier 'super)
+
+
+;; ido settings
+(ido-mode 1)
+(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+
+;; clear eshell
+(defun eshell/clear ()
+  "clear the eshell buffer."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
 
 (provide 'my-gen)
 
