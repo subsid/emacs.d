@@ -9,6 +9,8 @@
   :config
   (use-package org-bullets
     :ensure t)
+  (use-package org-pomodoro
+    :ensure t)
   (setq org-agenda-files (list "/Users/siddharth/Dropbox/notes/life.org"
                                "/Users/siddharth/Dropbox/notes/learning.org"
                                "/Users/siddharth/Dropbox/notes/books.org"

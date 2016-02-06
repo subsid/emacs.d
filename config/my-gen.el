@@ -49,7 +49,7 @@
 
 ;; Ace jump, jump around in a buffer
 (use-package ace-jump-mode
-  :bind ("C-," . ace-jump-mode))
+  :bind ("C-;" . ace-jump-mode))
 
 (setq x-select-enable-clipboard nil)
 
@@ -72,6 +72,11 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 
 (provide 'my-gen)
 

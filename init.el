@@ -23,7 +23,8 @@
 (require 'my-gen)
 (require 'my-projects)
 (require 'my-eyecandy)
-(require 'my-evil)
+;;(require 'my-evil)
+;;(require 'evil-bypass-clipboard)
 (require 'my-elisp)
 (require 'my-dired)
 (require 'my-ibuffer)
@@ -64,3 +65,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(font-lock-string-face ((t (:foreground "#CC9393")))))
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
