@@ -54,6 +54,7 @@
 (setq x-select-enable-clipboard nil)
 
 ;;settins for gpg stuff
+
 (setenv "PATH" (concat "/usr/local/bin" path-separator "/usr/texbin" path-separator (getenv "PATH")))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
@@ -73,10 +74,30 @@
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
-(setq-default indent-tabs-mode nil)
+;; to deactive tab indenting
+;; (setq-default indent-tabs-mode nil)
+;;
+
 (setq tab-width 2)
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
 
+
+;; set screen scrolling to half page, rather than full
+(defun window-half-height ()
+  (max 1 (/ (1- (window-height (selected-window))) 2)))
+
+(defun scroll-up-half ()
+  (interactive)
+  (scroll-up (window-half-height)))
+
+(defun scroll-down-half ()         
+  (interactive)                    
+  (scroll-down (window-half-height)))
+
+(global-set-key "\C-v" 'scroll-up-half)
+(global-set-key "\M-v" 'scroll-down-half)
+
 (provide 'my-gen)
+
 
