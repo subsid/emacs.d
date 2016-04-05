@@ -1,2 +1,2 @@
-;; org-persist.el - siddharths-MacBook-Pro.local at <2016-03-17 Thu 00:25>
-(setq stored-clock-history '(("/Users/siddharth/Dropbox/notes/learning.org" . 9626) ("/Users/siddharth/Dropbox/notes/learning.org" . 8671) ("/Users/siddharth/Dropbox/notes/learning.org" . 11244) ("/Users/siddharth/Dropbox/notes/learning.org" . 11280) ))
+;; org-persist.el - siddharths-MacBook-Pro.local at <2016-04-04 Mon 23:32>
+(setq stored-clock-history '(("/Users/siddharth/Dropbox/notes/learning.org" . 21153) ("/Users/siddharth/Dropbox/notes/learning.org" . 23726) ("/Users/siddharth/Dropbox/notes/learning.org" . 23762) ("/Users/siddharth/Dropbox/notes/learning.org" . 26870) ("/Users/siddharth/Dropbox/notes/learning.org" . 25702)))

@@ -51,7 +51,11 @@
 (use-package ace-jump-mode
   :bind ("C-;" . ace-jump-mode))
 
+;; This just doens't seem to work!!
 (setq x-select-enable-clipboard nil)
+(setq x-select-enable-primary nil)
+(setq mouse-drag-copy-region t)
+
 
 ;;settins for gpg stuff
 
@@ -99,5 +103,4 @@
 (global-set-key "\M-v" 'scroll-down-half)
 
 (provide 'my-gen)
-
 

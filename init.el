@@ -21,6 +21,7 @@
 (require 'use-package)
 
 (require 'my-gen)
+(require 'my-mac-clipboard-seperation)
 (require 'my-projects)
 (require 'my-eyecandy)
 ;;(require 'my-evil)
