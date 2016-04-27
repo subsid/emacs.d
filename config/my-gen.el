@@ -42,23 +42,28 @@
 
 ;; Zoom in/out of one buffer.
 (use-package zoom-window
-  :ensure zoom-window
+  :ensure t
   :config
   (global-set-key (kbd "C-x C-o") 'zoom-window-zoom)
   (setq zoom-window-mode-line-color "DarkGreen"))
 
-;; Ace jump, jump around in a buffer
-(use-package ace-jump-mode
-  :bind ("C-;" . ace-jump-mode))
+(use-package ace-window
+  :ensure t
+  :config
+  (global-set-key (kbd "C--") 'ace-window))
+
+(use-package avy
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+  (global-set-key (kbd "C-;") 'avy-goto-char))
 
 ;; This just doens't seem to work!!
 (setq x-select-enable-clipboard nil)
 (setq x-select-enable-primary nil)
 (setq mouse-drag-copy-region t)
 
-
 ;;settins for gpg stuff
-
 (setenv "PATH" (concat "/usr/local/bin" path-separator "/usr/texbin" path-separator (getenv "PATH")))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
@@ -101,6 +106,7 @@
 
 (global-set-key "\C-v" 'scroll-up-half)
 (global-set-key "\M-v" 'scroll-down-half)
+(global-set-key "\M-x" 'helm-M-x)
 
 (provide 'my-gen)
 
