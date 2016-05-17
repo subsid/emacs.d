@@ -40,6 +40,9 @@
   `(eval-after-load ,feature
      '(progn ,@body)))
 
+(use-package whole-line-or-region
+  :ensure t)
+
 ;; Zoom in/out of one buffer.
 (use-package zoom-window
   :ensure t
