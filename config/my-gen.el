@@ -11,18 +11,6 @@
 ;; treats camelCase as multiple words
 (global-subword-mode 1)
 
-(use-package nlinum 
-  :ensure t
-  :config
-  (progn
-    ;; Preset width nlinum
-    (add-hook 'nlinum-mode-hook
-	      (lambda ()
-		(setq nlinum--width
-		      (length (number-to-string
-			       (count-lines (point-min) (point-max)))))))))
-(setq linum-format "%3d ")
-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Dont litter my project folder!! 
@@ -39,6 +27,74 @@
   (declare (indent defun))
   `(eval-after-load ,feature
      '(progn ,@body)))
+
+;; This just doens't seem to work!!
+(setq x-select-enable-clipboard nil)
+(setq x-select-enable-primary nil)
+(setq mouse-drag-copy-region t)
+
+;;settins for gpg stuff
+(setenv "PATH" (concat "/usr/local/bin" path-separator "/usr/texbin" path-separator (getenv "PATH")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
+(setq mac-command-modifier 'control)
+(setq mac-control-modifier 'super)
+
+;; idon settings
+(ido-mode 1)
+(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+
+;; clear eshell
+(defun eshell/clear ()
+  "clear the eshell buffer."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
+
+;; to deactive tab indenting
+;; (setq-default indent-tabs-mode nil)
+;;
+
+(setq tab-width 2)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
+
+;; set screen scrolling to half page, rather than full
+(defun window-half-height ()
+  (max 1 (/ (1- (window-height (selected-window))) 2)))
+
+(defun scroll-up-half ()
+  (interactive)
+  (scroll-up (window-half-height)))
+
+(defun scroll-down-half ()         
+  (interactive)                    
+  (scroll-down (window-half-height)))
+
+(global-set-key "\C-v" 'scroll-up-half)
+(global-set-key "\M-v" 'scroll-down-half)
+(global-set-key "\M-x" 'helm-M-x)
+
+;; Plugins
+(use-package markdown-mode
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t)
+
+(use-package nlinum 
+  :ensure t
+  :config
+  (progn
+    ;; Preset width nlinum
+    (add-hook 'nlinum-mode-hook
+	      (lambda ()
+		(setq nlinum--width
+		      (length (number-to-string
+			       (count-lines (point-min) (point-max)))))))))
+(setq linum-format "%3d ")
 
 (use-package whole-line-or-region
   :ensure t)
@@ -61,55 +117,10 @@
   (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
   (global-set-key (kbd "C-;") 'avy-goto-char))
 
-;; This just doens't seem to work!!
-(setq x-select-enable-clipboard nil)
-(setq x-select-enable-primary nil)
-(setq mouse-drag-copy-region t)
-
-;;settins for gpg stuff
-(setenv "PATH" (concat "/usr/local/bin" path-separator "/usr/texbin" path-separator (getenv "PATH")))
-(setq exec-path (append exec-path '("/usr/local/bin")))
-
-(setq mac-command-modifier 'control)
-(setq mac-control-modifier 'super)
-
-
-;; ido settings
-(ido-mode 1)
-(setq ido-everywhere t)
-(setq ido-enable-flex-matching t)
-
-;; clear eshell
-(defun eshell/clear ()
-  "clear the eshell buffer."
-  (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer)))
-
-;; to deactive tab indenting
-;; (setq-default indent-tabs-mode nil)
-;;
-
-(setq tab-width 2)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
-
-
-;; set screen scrolling to half page, rather than full
-(defun window-half-height ()
-  (max 1 (/ (1- (window-height (selected-window))) 2)))
-
-(defun scroll-up-half ()
-  (interactive)
-  (scroll-up (window-half-height)))
-
-(defun scroll-down-half ()         
-  (interactive)                    
-  (scroll-down (window-half-height)))
-
-(global-set-key "\C-v" 'scroll-up-half)
-(global-set-key "\M-v" 'scroll-down-half)
-(global-set-key "\M-x" 'helm-M-x)
+(use-package expand-region
+  :ensure t
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
 
 (provide 'my-gen)
 
