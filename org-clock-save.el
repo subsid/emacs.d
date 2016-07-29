@@ -1,2 +1,2 @@
-;; org-persist.el - siddharths-MacBook-Pro.local at <2016-07-15 Fri 10:23>
-(setq stored-clock-history '(("/Users/siddharth/Dropbox/notes/work.org" . 2872) ("/Users/siddharth/Dropbox/notes/work.org" . 2955) ("/Users/siddharth/Dropbox/notes/work.org" . 2030) ("/Users/siddharth/Dropbox/notes/work.org" . 2243) ("/Users/siddharth/Dropbox/notes/work.org" . 306)))
+;; org-persist.el - siddharths-MacBook-Pro.local at <2016-07-29 Fri 09:27>
+(setq stored-clock-history '(("/Users/siddharth/Dropbox/notes/work.org" . 8893) ("/Users/siddharth/Dropbox/notes/work.org" . 5170) ("/Users/siddharth/Dropbox/notes/work.org" . 318) ("/Users/siddharth/Dropbox/notes/work.org" . 4334) ("/Users/siddharth/Dropbox/notes/life.org" . 18626)))

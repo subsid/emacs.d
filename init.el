@@ -35,6 +35,8 @@
 (require 'my-auto-complete)
 (require 'my-coffee)
 (require 'my-leader-keys)
+;; Language
+(require 'my-clojure)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

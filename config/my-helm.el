@@ -42,6 +42,10 @@
                            "*helm jump*")))
 
     (use-package helm-ag)
+    (use-package helm-cider
+      :ensure t
+      :config
+      (helm-cider-mode 1))
     (use-package helm-swoop
       :ensure helm-swoop
       :config
