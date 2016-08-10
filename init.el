@@ -35,8 +35,11 @@
 (require 'my-auto-complete)
 (require 'my-coffee)
 (require 'my-leader-keys)
+(require 'my-path)
+(require 'my-parens)
 ;; Language
 (require 'my-clojure)
+(require 'my-sml)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

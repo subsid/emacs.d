@@ -6,10 +6,15 @@
   :ensure helm
   :config
   (progn
-    (setq helm-buffers-fuzzy-matching t)
+    (setq helm-buffers-fuzzy-matching t 
+	  helm-recentf-fuzzy-match    t)
+    
     (setq helm-M-x-fuzzy-match t)
     (setq helm-split-window-default-side (quote other))
     (setq helm-split-window-in-side-p nil)
+    (global-set-key (kbd "C-c h") 'helm-command-prefix)
+    (global-unset-key (kbd "C-x c"))
+    (global-set-key (kbd "C-x b") 'helm-mini)
     (defun my-helm-in-ido (buffer)
       "Display a helm buffer in ido. Send the purists screaming."
       (interactive)

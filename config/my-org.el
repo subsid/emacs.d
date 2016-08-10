@@ -46,6 +46,7 @@
   (define-key global-map "\C-ca" 'org-agenda)
   ;;org-capture
   (define-key global-map "\C-cc" 'org-capture)
+  (setq org-habits-only-for-today nil)
   ;; tracking daily habits
   (setq org-agenda-custom-commands
         '(("h" "Daily habits" 
