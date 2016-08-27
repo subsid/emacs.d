@@ -1,7 +1,7 @@
-(use-package auto-complete
-  :ensure auto-complete
+(use-package company
+  :ensure t
   :config
   (progn
-  (ac-config-default)))
+    (add-hook 'after-init-hook 'global-company-mode)))
 
 (provide 'my-auto-complete)

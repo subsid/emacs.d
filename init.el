@@ -2,8 +2,8 @@
 (add-to-list 'load-path (concat user-emacs-directory "config" "/languages"))
 (add-to-list 'load-path (concat user-emacs-directory "config" "/eyecandy"))
 
-(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("melpa-stable" . "http://stable.melpa.org/packages/")
+(setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+			 ("melpa" . "https://melpa.org/packages/")
 			 ("org" . "http://orgmode.org/elpa/")
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
 

@@ -1,5 +1,4 @@
 (use-package cider
-  :ensure t
-  :pin manual)
+  :ensure t)
 
 (provide 'my-clojure)
