@@ -3,7 +3,6 @@
 (add-to-list 'load-path (concat user-emacs-directory "config" "/eyecandy"))
 
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")
 			 ("org" . "http://orgmode.org/elpa/")
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -21,6 +20,7 @@
 (require 'use-package)
 
 (require 'my-gen)
+(require 'my-global)
 (require 'my-mac-clipboard-seperation)
 (require 'my-projects)
 (require 'my-eyecandy)

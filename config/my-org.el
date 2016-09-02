@@ -46,17 +46,7 @@
   (define-key global-map "\C-ca" 'org-agenda)
   ;;org-capture
   (define-key global-map "\C-cc" 'org-capture)
-  (setq org-habits-only-for-today nil)
-  ;; tracking daily habits
-  (setq org-agenda-custom-commands
-        '(("h" "Daily habits" 
-           ((agenda ""))
-           ((org-agenda-show-log t)
-            (org-agenda-ndays 7)
-            (org-agenda-log-mode-items '(state))
-            (org-agenda-skip-function '(org-agenda-skip-entry-if 'notregexp ":daily:"))))
-          ;; other commands here
-          )))
+  (setq org-habits-only-for-today nil))
 
 ;; Collapse everything except current tab.
 (defun org-show-current-heading-tidily ()
@@ -74,17 +64,7 @@
     (org-show-entry)
     (show-children)))
 
-(global-set-key "\M-=" 'org-show-current-heading-tidily)
+(define-key org-mode-map (kbd  "\M-=") 'org-show-current-heading-tidily)
 
 (provide 'my-org)
 
-
-  ;; configure org-capture templates
-  ;; (setq org-capture-templates
-  ;;    '(("t" ;hotkey
-  ;;      "TODO list item" ; name
-  ;;      entry ; type
-  ;;      ;heading type and title
-  ;;      (file+headline org-default-notes-file "Tasks")
-  ;;      "* TODO %?\n %i\n %a") ;template
-  ;;      ))
