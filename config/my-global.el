@@ -48,8 +48,6 @@
 ;; to deactive tab indenting
 ;; (setq-default indent-tabs-mode nil)
 ;;
-(setq tab-always-indent 'complete)
-
 
 (setq tab-width 2)
 (defvaralias 'c-basic-offset 'tab-width)
@@ -85,6 +83,7 @@
 (global-set-key (kbd "M-`") 'other-frame)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "C-x n") 'neotree-toggle)
 
 (setq linum-format "%3d ")
 

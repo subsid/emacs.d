@@ -64,7 +64,7 @@
     (org-show-entry)
     (show-children)))
 
-(define-key org-mode-map (kbd  "\M-=") 'org-show-current-heading-tidily)
+(define-key org-mode-map (kbd  "M-=") 'org-show-current-heading-tidily)
 
 (provide 'my-org)
 
