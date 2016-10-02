@@ -65,7 +65,10 @@
 	(quote
 	 (org-agenda-skip-entry-if
 	  (quote notregexp)
-	  ":daily:")))))))))
+	  ":daily:"))))))))
+ '(package-selected-packages
+   (quote
+    (zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elisp-slime-nav company-ycmd coffee-mode ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

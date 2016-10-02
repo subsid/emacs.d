@@ -8,7 +8,6 @@
 (tool-bar-mode -1)
 (global-linum-mode 1)
 (scroll-bar-mode -1)
-(global-undo-tree-mode 1)
 ;; treats camelCase as multiple words
 (global-subword-mode 1)
 

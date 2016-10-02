@@ -45,11 +45,10 @@
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
 
-
-(use-package move-text
+(use-package undo-tree
   :ensure t
   :config
-  (move-text-default-bindings))
+  (global-undo-tree-mode 1))
 
 (provide 'my-gen)
 
