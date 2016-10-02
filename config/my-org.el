@@ -7,8 +7,6 @@
   (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
   :demand t
   :config
-  (use-package org-bullets
-    :ensure t)
   (setq org-agenda-files (list "/Users/siddharth/Dropbox/notes/life.org"
                                "/Users/siddharth/Dropbox/notes/learning.org"
                                "/Users/siddharth/Dropbox/notes/books.org"
@@ -17,9 +15,11 @@
   (setq org-archive-location "::* Archived Tasks")
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
   (setq org-journal-dir (concat org-directory "/journal"))
+  
   (add-to-list 'org-modules 'org-habit)
   (add-to-list 'org-modules 'org-bullets)
   (add-to-list 'org-modules 'org-crypt)
+  
   (setq org-export-coding-system 'utf-8)
   (setq org-capture-templates
         '(("t" ;hotkey
@@ -28,8 +28,7 @@
                                         ;heading type and title
            (file+headline org-default-notes-file "Inbox")
            "* %? %t %^G")
-          ("j" "Journal" entry (file+datetree org-default-notes-file)
-           "* %<%I:%M %p> %?")))
+	  ))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
@@ -46,7 +45,24 @@
   (define-key global-map "\C-ca" 'org-agenda)
   ;;org-capture
   (define-key global-map "\C-cc" 'org-capture)
-  (setq org-habits-only-for-today nil))
+  (setq org-habits-only-for-today nil)
+
+  ;; Org babel support for languages
+  ;; active Babel languages
+  (setq org-src-fontify-natively t)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (emacs-lisp . nil)
+     (ipython . t)
+     (ruby . t)
+     )))
+
+(use-package htmlize
+  :ensure t)
+
+(use-package org-bullets
+  :ensure t)
 
 ;; Collapse everything except current tab.
 (defun org-show-current-heading-tidily ()

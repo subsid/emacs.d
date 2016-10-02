@@ -45,5 +45,11 @@
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
 
+
+(use-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings))
+
 (provide 'my-gen)
 
