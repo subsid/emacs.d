@@ -4,7 +4,7 @@
   :commands (org-mode org-capture org-agenda orgtbl-mode)
   :init
   (setq org-directory "/Users/siddharth/Dropbox/notes")
-  (setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "|" "DONE")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
   :demand t
   :config
   (setq org-agenda-files (list "/Users/siddharth/Dropbox/notes/life.org"

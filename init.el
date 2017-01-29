@@ -49,26 +49,20 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-custom-commands
    (quote
-    (("x" "custom agenda view"
-      ((agenda "" nil)
+    (("x" "daily status"
+      ((agenda ""
+	       ((org-agenda-prefix-format " %i %-12:c%?-12t% s %?e ")))
        (tags "TODO=\"INPROGRESS\"" nil)
-       (tags "TODO=\"TODO\"+SCHEDULED=\"\"" nil))
+       (tags "work+TODO=\"INPROGRESS\"|work+TODO=\"TODO\"" nil)
+       (tags "TODO=\"TODO\"+SCHEDULED=\"\"-work" nil))
       nil nil)
-     ("h" "Daily habits"
-      ((agenda "" nil))
-      ((org-agenda-show-log t)
-       (org-agenda-ndays 7)
-       (org-agenda-log-mode-items
-	(quote
-	 (state)))
-       (org-agenda-skip-function
-	(quote
-	 (org-agenda-skip-entry-if
-	  (quote notregexp)
-	  ":daily:"))))))))
+     ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
+      ((org-agenda-view-columns-initially t))))))
+ '(org-columns-default-format
+   "%25ITEM %TODO %Effort{:}(Estimated Effort) %CLOCKSUM(Time Spent) %CLOSED %SCHEDULED %DEADLINE"))
  '(package-selected-packages
    (quote
-    (zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elisp-slime-nav company-ycmd coffee-mode ace-window))))
+    (ycmd elpy zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elisp-slime-nav company-ycmd coffee-mode ace-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

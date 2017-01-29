@@ -11,6 +11,7 @@
   :ensure t
   :config
   (progn
+    (setq ycmd-global-modes '(not emacs-lisp-mode))
     (add-hook 'after-init-hook 'global-ycmd-mode)
     (set-variable 'ycmd-server-command
 		  '("bash" "/Users/siddharth/workspace/ycmd/run_ycmd.sh"))))
