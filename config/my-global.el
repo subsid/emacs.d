@@ -31,7 +31,8 @@
   (declare (indent defun))
   `(eval-after-load ,feature
      '(progn ,@body)))
-
+;; Remap command and control?
+;; Not sure whats the right thing to do.
 (setq mac-command-modifier 'control)
 (setq mac-control-modifier 'super)
 
