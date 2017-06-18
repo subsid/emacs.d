@@ -3,15 +3,16 @@
 (use-package org
   :commands (org-mode org-capture org-agenda orgtbl-mode)
   :init
-  (setq org-directory "/Users/siddharth/Dropbox/notes")
+  (setq home (shell-command-to-string "printf %s \"$HOME\""))
+  (setq org-directory (concat home "/Dropbox/notes"))
   (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
   :demand t
   :config
-  (setq org-agenda-files (list "/Users/siddharth/Dropbox/notes/life.org"
-                               "/Users/siddharth/Dropbox/notes/learning.org"
-                               "/Users/siddharth/Dropbox/notes/books.org"
-                               "/Users/siddharth/Dropbox/notes/inbox.org"
-                               "/Users/siddharth/Dropbox/notes/work.org"))
+  (setq org-agenda-files (list (concat home "/Dropbox/notes/life.org")
+			       (concat home "/Dropbox/notes/learning.org")
+			       (concat home "/Dropbox/notes/books.org")
+			       (concat home "/Dropbox/notes/inbox.org")
+			       (concat home "/Dropbox/notes/work.org")))
   (setq org-archive-location "::* Archived Tasks")
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
   (setq org-journal-dir (concat org-directory "/journal"))
@@ -54,7 +55,6 @@
    'org-babel-load-languages
    '((python . t)
      (emacs-lisp . nil)
-     (ipython . t)
      (ruby . t)
      )))
 

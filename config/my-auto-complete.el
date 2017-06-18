@@ -13,8 +13,9 @@
   (progn
     (setq ycmd-global-modes '(not emacs-lisp-mode))
     (add-hook 'after-init-hook 'global-ycmd-mode)
+    (setq home (shell-command-to-string "printf %s \"$HOME\""))
     (set-variable 'ycmd-server-command
-		  '("bash" "/Users/siddharth/workspace/ycmd/run_ycmd.sh"))))
+                  (list (concat home "/.virtualenvs/global/bin/python") (concat home "/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd")))))
 
 (use-package company-ycmd
   :ensure t
