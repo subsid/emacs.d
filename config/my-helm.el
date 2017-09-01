@@ -8,7 +8,6 @@
   (progn
     (setq helm-buffers-fuzzy-matching t 
 	  helm-recentf-fuzzy-match    t)
-    
     (setq helm-M-x-fuzzy-match t)
     (setq helm-split-window-default-side (quote other))
     (setq helm-split-window-in-side-p nil)

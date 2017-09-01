@@ -12,7 +12,9 @@
 			       (concat home "/Dropbox/notes/learning.org")
 			       (concat home "/Dropbox/notes/books.org")
 			       (concat home "/Dropbox/notes/inbox.org")
-			       (concat home "/Dropbox/notes/work.org")))
+			       (concat home "/Dropbox/notes/work.org")
+			       (concat home "/Dropbox/notes/chores.org")))
+  
   (setq org-archive-location "::* Archived Tasks")
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
   (setq org-journal-dir (concat org-directory "/journal"))

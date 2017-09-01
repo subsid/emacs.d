@@ -16,6 +16,13 @@
 		      (length (number-to-string
 			       (count-lines (point-min) (point-max)))))))))
 
+(use-package ledger-mode
+  :ensure t
+  :init
+  (setq ledger-clear-whole-transactions 1)
+  :config
+  :mode "\\.dat\\'")
+
 (use-package whole-line-or-region
   :ensure t
   :config
