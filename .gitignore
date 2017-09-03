@@ -6,6 +6,7 @@ eshell/
 .saves/
 *.dat
 bookmarks
+network-security.data
 *~
 
 games/
