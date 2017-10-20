@@ -54,13 +54,15 @@
  ;; If there is more than one, they won't work right.
  '(ledger-reports
    (quote
-    (("eating-budget" "%(binary) --budget -p \"from august 2017\" -f %(ledger-file) register ^expenses:eating")
+    (("liabilities-reimbursements" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger-2017.dat bal ^assets:reimbursements ^liabilities")
+     ("unbudgeted" "ledger --unbudgeted -p \"this month\" -f /Users/subsid/Google\\ Drive/notes/ledger-2017.dat register ^expenses")
+     ("bal" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger-2017.dat bal --depth 2")
+     ("eating-budget" "%(binary) --budget -p \"this month\" -f %(ledger-file) register ^expenses:eating")
      ("stock" "%(binary) -f /Users/subsid/Dropbox/notes/ledger-2017.dat bal IRA")
-     ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")
-     ("budget" " %(binary) -f %(ledger-file) --budget -p \"this month\" register ^expenses"))))
+     ("budget" "%(binary) -f %(ledger-file) --budget --add-budget -p \"this month\" register ^expenses"))))
  '(org-agenda-custom-commands
    (quote
     (("x" "daily status"
@@ -82,7 +84,7 @@
    "%25ITEM %TODO %Effort{:}(Estimated Effort) %CLOCKSUM(Time Spent) %CLOSED %SCHEDULED %DEADLINE")
  '(package-selected-packages
    (quote
-    (tex auctex yasnippet ledger-mode ox-rss zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elpy elisp-slime-nav company-ycmd coffee-mode ace-window))))
+    (latex-preview-pane dired-subtree tex auctex yasnippet ledger-mode ox-rss zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elpy elisp-slime-nav company-ycmd coffee-mode ace-window))))
  '(package-selected-packages
    (quote
     (ycmd elpy zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elisp-slime-nav company-ycmd coffee-mode ace-window)))

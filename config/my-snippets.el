@@ -8,7 +8,7 @@
   ;; (yas-reload-all)
   ;; (define-key yas-minor-mode-map (kbd "<tab>") nil)
   ;; (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+  ;; (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
   ;; Bind `C-c y' to `yas-expand' ONLY.
   (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
   (define-key yas-minor-mode-map (kbd "C-c SPC") #'company-yasnippet))

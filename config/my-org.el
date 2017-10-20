@@ -4,16 +4,16 @@
   :commands (org-mode org-capture org-agenda orgtbl-mode)
   :init
   (setq home (shell-command-to-string "printf %s \"$HOME\""))
-  (setq org-directory (concat home "/Dropbox/notes"))
+  (setq org-directory (concat home "/Google Drive/notes"))
   (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
   :demand t
   :config
-  (setq org-agenda-files (list (concat home "/Dropbox/notes/life.org")
-			       (concat home "/Dropbox/notes/learning.org")
-			       (concat home "/Dropbox/notes/books.org")
-			       (concat home "/Dropbox/notes/inbox.org")
-			       (concat home "/Dropbox/notes/work.org")
-			       (concat home "/Dropbox/notes/chores.org")))
+  (setq org-agenda-files (list (concat home "/Google Drive/notes/life.org")
+			       (concat home "/Google Drive/notes/learning.org")
+			       (concat home "/Google Drive/notes/books.org")
+			       (concat home "/Google Drive/notes/inbox.org")
+			       (concat home "/Google Drive/notes/work.org")
+			       (concat home "/Google Drive/notes/chores.org")))
   
   (setq org-archive-location "::* Archived Tasks")
   (setq org-default-notes-file (concat org-directory "/inbox.org"))

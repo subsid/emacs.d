@@ -4,4 +4,7 @@
   :config
   (setq TeX-auto-save t))
 
+(use-package latex-preview-pane
+  :ensure t)
+
 (provide 'my-tex)

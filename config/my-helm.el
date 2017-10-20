@@ -47,8 +47,7 @@
       :ensure t
       :config
       (helm-cider-mode 1))
-    (require 'my-helm-swoop)
-
+    
     (after 'flycheck
       (use-package helm-flycheck
         :ensure helm-flycheck)))
