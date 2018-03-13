@@ -31,6 +31,11 @@
                                         ;heading type and title
            (file+headline org-default-notes-file "Inbox")
            "* %? %t %^G")
+	  ("j"
+	   "Journal entry"
+	   plain
+	   (file+olp+datetree "/Users/subsid/Google Drive/notes/journal.org")
+	   "[%<%H:%M>] %?")
 	  ))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (require 'org-crypt)

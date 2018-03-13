@@ -54,15 +54,15 @@
  ;; If there is more than one, they won't work right.
  '(ledger-reports
    (quote
-    (("liabilities-reimbursements" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger-2017.dat bal ^assets:reimbursements ^liabilities")
-     ("unbudgeted" "ledger --unbudgeted -p \"this month\" -f /Users/subsid/Google\\ Drive/notes/ledger-2017.dat register ^expenses")
-     ("bal" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger-2017.dat bal --depth 2")
-     ("eating-budget" "%(binary) --budget -p \"this month\" -f %(ledger-file) register ^expenses:eating")
-     ("stock" "%(binary) -f /Users/subsid/Dropbox/notes/ledger-2017.dat bal IRA")
+    (("liabilities-reimbursements" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger.dat bal Assets:Reimbursements Liabilities")
+     ("budget-all" "%(binary) --budget --add-budget -p \"this year\" -f /Users/subsid/Google\\ Drive/notes/ledger.dat register Expenses")
+     ("bal" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger.dat bal --depth 2")
+     ("personal-budget" "%(binary) --budget -p \"this month\" -f /Users/subsid/Google\\ Drive/notes/ledger.dat register Expenses:Personal")
+     ("stock" "%(binary) -f /Users/subsid/Google\\ Drive/notes/ledger.dat bal IRA")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")
-     ("budget" "%(binary) -f %(ledger-file) --budget --add-budget -p \"this month\" register ^expenses"))))
+     ("budget" "%(binary) -f /Users/subsid/Google\\ Drive/notes/ledger.dat --budget --add-budget -p \"this month\" register Expenses and not Expenses:Phone and not Expenses:Holiday"))))
  '(org-agenda-custom-commands
    (quote
     (("x" "daily status"
@@ -84,7 +84,7 @@
    "%25ITEM %TODO %Effort{:}(Estimated Effort) %CLOCKSUM(Time Spent) %CLOSED %SCHEDULED %DEADLINE")
  '(package-selected-packages
    (quote
-    (latex-preview-pane dired-subtree tex auctex yasnippet ledger-mode ox-rss zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elpy elisp-slime-nav company-ycmd coffee-mode ace-window))))
+    (ox-reveal org-reveal org-reveal-root latex-preview-pane dired-subtree tex auctex yasnippet ledger-mode ox-rss zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elpy elisp-slime-nav company-ycmd coffee-mode ace-window))))
  '(package-selected-packages
    (quote
     (ycmd elpy zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elisp-slime-nav company-ycmd coffee-mode ace-window)))

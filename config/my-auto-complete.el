@@ -11,7 +11,7 @@
   :ensure t
   :config
   (progn
-    (setq ycmd-global-modes '(not emacs-lisp-mode))
+    (setq ycmd-global-modes '(not emacs-lisp-mode org-mode helm-mode))
     (add-hook 'after-init-hook 'global-ycmd-mode)
     (setq home (shell-command-to-string "printf %s \"$HOME\""))
     (set-variable 'ycmd-server-command

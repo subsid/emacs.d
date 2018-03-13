@@ -57,5 +57,12 @@
   :config
   (global-undo-tree-mode 1))
 
+(use-package ox-reveal
+  :ensure t
+  :config
+  (setq org-reveal-root "/Users/subsid/Library/reveal.js")
+  (setq org-reveal-title-slide nil))
+
 (provide 'my-gen)
+
 
