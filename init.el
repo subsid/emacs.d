@@ -54,15 +54,15 @@
  ;; If there is more than one, they won't work right.
  '(ledger-reports
    (quote
-    (("liabilities-reimbursements" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger.dat bal Assets:Reimbursements Liabilities")
+    (("liabilities-reimbursements" "ledger -f ~/Google\\ Drive/notes/ledger.dat bal Assets:Reimbursements Liabilities")
      ("budget-all" "%(binary) --budget --add-budget -p \"this year\" -f /Users/subsid/Google\\ Drive/notes/ledger.dat register Expenses")
-     ("bal" "ledger -f /Users/subsid/Google\\ Drive/notes/ledger.dat bal --depth 2")
-     ("personal-budget" "%(binary) --budget -p \"this month\" -f /Users/subsid/Google\\ Drive/notes/ledger.dat register Expenses:Personal")
-     ("stock" "%(binary) -f /Users/subsid/Google\\ Drive/notes/ledger.dat bal IRA")
+     ("bal" "ledger -f ~/Google\\ Drive/notes/ledger.dat bal --depth 2")
+     ("personal-budget" "%(binary) --budget -p \"this month\" -f ~/Google\\ Drive/notes/ledger.dat register Expenses:Personal")
+     ("stock" "%(binary) -f ~/Google\\ Drive/notes/ledger.dat bal IRA")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")
-     ("budget" "%(binary) -f /Users/subsid/Google\\ Drive/notes/ledger.dat --budget --add-budget -p \"this month\" register Expenses and not Expenses:Phone and not Expenses:Holiday"))))
+     ("budget" "%(binary) -f ~/Google\\ Drive/notes/ledger.dat --budget --add-budget -p \"this month\" register Expenses and not Expenses:Phone and not Expenses:Holiday"))))
  '(org-agenda-custom-commands
    (quote
     (("x" "daily status"
