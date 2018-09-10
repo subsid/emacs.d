@@ -24,6 +24,7 @@
   (add-to-list 'org-modules 'org-crypt)
   
   (setq org-export-coding-system 'utf-8)
+  (setq capture-journal-location (concat home "/Dropbox/notes/journal.org"))
   (setq org-capture-templates
         '(("t" ;hotkey
            "Tidbit" ; Random Stuff
@@ -34,7 +35,7 @@
 	  ("j"
 	   "Journal entry"
 	   plain
-	   (file+olp+datetree "/Users/subsid/Dropbox/notes/journal.org")
+	   (file+olp+datetree capture-journal-location)
 	   "[%<%H:%M>] %?")
 	  ))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
