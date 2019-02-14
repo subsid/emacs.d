@@ -38,7 +38,6 @@
 (require 'my-leader-keys)
 (require 'my-path)
 (require 'my-parens)
-(require 'my-tex)
 
 ;; Language
 (require 'my-clojure)
@@ -54,16 +53,17 @@
  ;; If there is more than one, they won't work right.
  '(ledger-reports
    (quote
-    (("liabilities-reimbursements" "ledger -f ~/Dropbox/notes/ledger.dat bal Assets:Reimbursements:Roommates:Cedar402 Liabilities:Roommates:Cedar402")
+    (("liabilities-reimbursements" "ledger -f ~/Dropbox/notes/ledger.dat bal LiabReimb:Roommates:Cedar402 --empty")
      ("budget-all" "%(binary) --budget --add-budget -p \"this year\" -f ~/Dropbox/notes/ledger.dat register Expenses")
      ("bal" "ledger -f ~/Dropbox/notes/ledger.dat bal --depth 2")
      ("personal-budget" "%(binary) --budget -p \"this month\" -f ~/Dropbox/notes/ledger.dat register Expenses:Personal")
      ("stock" "%(binary) -f ~/Dropbox/notes/ledger.dat bal IRA")
-     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("reg-expenses" "%(binary) -f %(ledger-file) -p \"this month\" reg Expenses")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")
-     ("budget" "%(binary) -f ~/Dropbox/notes/ledger.dat --budget --add-budget -p \"this month\" register not Expenses:Phone and not Expenses:Holiday and not Expenses:Fees:Masters and Expenses")
-     ("creditcard" "ledger -f ~/Dropbox/notes/ledger.dat bal Liabilities:Creditcard"))))
+     ("budget" "%(binary) -f ~/Dropbox/notes/ledger.dat --budget --add-budget -p \"this month\" register not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and Expenses")
+     ("creditcard" "ledger -f ~/Dropbox/notes/ledger.dat bal LiabReimb:Creditcard --empty")
+     ("forecast budget" "ledger -f ~/Dropbox/notes/ledger.dat -p \"from this year\" --forecast \"d<[2019]\" bal Expenses --depth 2"))))
  '(org-agenda-custom-commands
    (quote
     (("x" "daily status"
@@ -85,7 +85,8 @@
    "%25ITEM %TODO %Effort{:}(Estimated Effort) %CLOCKSUM(Time Spent) %CLOSED %SCHEDULED %DEADLINE")
  '(package-selected-packages
    (quote
-    (ox-reveal org-reveal org-reveal-root latex-preview-pane dired-subtree tex auctex yasnippet ledger-mode ox-rss zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elpy elisp-slime-nav company-ycmd coffee-mode ace-window))))
+    (ox-reveal org-reveal org-reveal-root latex-preview-pane dired-subtree tex yasnippet ledger-mode ox-rss zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org ob-ipython nlinum move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elpy elisp-slime-nav company-ycmd ace-window)))
+ '(undo-limit 1000))
  '(package-selected-packages
    (quote
     (ycmd elpy zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elisp-slime-nav company-ycmd coffee-mode ace-window)))

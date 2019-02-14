@@ -24,6 +24,7 @@
   (add-to-list 'org-modules 'org-crypt)
   
   (setq org-export-coding-system 'utf-8)
+  (setq org-export-allow-bind-keywords 1)
   (setq capture-journal-location (concat home "/Dropbox/notes/journal.org"))
   (setq org-capture-templates
         '(("t" ;hotkey

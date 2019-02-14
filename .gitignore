@@ -12,3 +12,6 @@ network-security.data
 games/
 /ido.last
 /.DS_Store
+
+/notes
+org-clock-save.el
