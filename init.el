@@ -58,11 +58,11 @@
      ("bal" "ledger -f ~/Dropbox/notes/ledger.dat bal --depth 2")
      ("personal-budget" "%(binary) --budget -p \"this month\" -f ~/Dropbox/notes/ledger.dat register Expenses:Personal")
      ("stock" "%(binary) -f ~/Dropbox/notes/ledger.dat bal IRA")
-     ("reg-expenses" "%(binary) -f %(ledger-file) -p \"this month\" reg Expenses")
+     ("reg-expenses" "%(binary) -f ~/Dropbox/notes/ledger.dat -p \"this month\" reg not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and Expenses")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")
-     ("budget" "%(binary) -f ~/Dropbox/notes/ledger.dat --budget --add-budget -p \"this month\" register not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and Expenses")
-     ("creditcard" "ledger -f ~/Dropbox/notes/ledger.dat bal LiabReimb:Creditcard --empty")
+     ("budget" "%(binary) -f ~/Dropbox/notes/ledger.dat --budget --add-budget -p \"this month\" register not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and Expenses")
+     ("creditcard" "ledger -f ~/Dropbox/notes/ledger.dat bal LiabReimb:CreditCard --empty")
      ("forecast budget" "ledger -f ~/Dropbox/notes/ledger.dat -p \"from this year\" --forecast \"d<[2019]\" bal Expenses --depth 2"))))
  '(org-agenda-custom-commands
    (quote
