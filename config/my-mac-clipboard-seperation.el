@@ -38,10 +38,10 @@ This function is only necessary in window system."
       (isolate-kill-ring)
       ;; bind CMD+C to pasteboard-copy
       (global-set-key (kbd "s-c") 'pasteboard-copy)
-      ;; (define-key whole-line-or-region-local-mode-map (kbd "s-v") 'nil) 
+      (define-key whole-line-or-region-local-mode-map (kbd "s-v") 'nil) 
       ;; bind CMD+V to pasteboard-paste
       (global-set-key (kbd "s-v") 'pasteboard-paste)
-      ;; (define-key whole-line-or-region-local-mode-map (kbd "s-x") 'nil) 
+      (define-key whole-line-or-region-local-mode-map (kbd "s-x") 'nil) 
       ;; bind CMD+X to pasteboard-cut
       (global-set-key (kbd "s-x") 'pasteboard-cut))
 
@@ -51,3 +51,4 @@ This function is only necessary in window system."
   )
 
 (provide 'my-mac-clipboard-seperation)
+
