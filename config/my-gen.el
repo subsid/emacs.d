@@ -2,6 +2,14 @@
 (use-package markdown-mode
   :ensure t)
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (progn
+    (when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+    ))
+
 (use-package yaml-mode
   :ensure t)
 

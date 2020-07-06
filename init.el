@@ -87,11 +87,8 @@
    "%25ITEM %TODO %Effort{:}(Estimated Effort) %CLOCKSUM(Time Spent) %CLOSED %SCHEDULED %DEADLINE")
  '(package-selected-packages
    (quote
-    (ox-reveal org-reveal org-reveal-root latex-preview-pane dired-subtree tex ledger-mode ox-rss zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org ob-ipython nlinum move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elpy elisp-slime-nav company-ycmd ace-window)))
+    (zoom-window zenburn-theme yaml-mode whole-line-or-region use-package undo-tree smartparens ox-reveal nlinum neotree markdown-mode ledger-mode htmlize helm-projectile helm-cider helm-ag expand-region exec-path-from-shell elisp-slime-nav dired-subtree company-ycmd ace-window)))
  '(undo-limit 1000))
- '(package-selected-packages
-   (quote
-    (ycmd elpy zoom-window zenburn-theme yaml-mode whole-line-or-region use-package tangotango-theme sml-mode smartparens org-pomodoro org-journal org-bullets org ob-ipython nlinum neotree move-text markdown-mode magit htmlize helm-swoop helm-projectile helm-flycheck helm-cider helm-ag flycheck-ycmd expand-region evil-leader elisp-slime-nav company-ycmd coffee-mode ace-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

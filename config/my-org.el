@@ -10,6 +10,7 @@
   :config
   (setq org-agenda-files (list (concat home "/Dropbox/notes/life.org")
 			       (concat home "/Dropbox/notes/learning.org")
+			       (concat home "/Dropbox/notes/today.org")
 			       (concat home "/Dropbox/notes/books.org")
 			       (concat home "/Dropbox/notes/inbox.org")
 			       (concat home "/Dropbox/notes/work.org")

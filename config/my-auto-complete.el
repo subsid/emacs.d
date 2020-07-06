@@ -21,7 +21,7 @@
     (add-hook 'after-init-hook 'global-ycmd-mode)
     (setq home (shell-command-to-string "printf %s \"$HOME\""))
     (set-variable 'ycmd-server-command
-                  (list (concat home "/.virtualenvs/global3/bin/python") (concat home "/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd")))))
+                  (list (concat home "/anaconda3/bin/python") (concat home "/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd")))))
 
 (use-package company-ycmd
   :ensure t

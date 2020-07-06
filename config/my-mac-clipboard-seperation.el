@@ -33,22 +33,22 @@ This function is only necessary in window system."
   (pasteboard-copy)
   (delete-region (region-beginning) (region-end)))
 
-(if window-system
-    (progn
-      (isolate-kill-ring)
-      ;; bind CMD+C to pasteboard-copy
-      (global-set-key (kbd "s-c") 'pasteboard-copy)
-      (define-key whole-line-or-region-local-mode-map (kbd "s-v") 'nil) 
-      ;; bind CMD+V to pasteboard-paste
-      (global-set-key (kbd "s-v") 'pasteboard-paste)
-      (define-key whole-line-or-region-local-mode-map (kbd "s-x") 'nil) 
-      ;; bind CMD+X to pasteboard-cut
-      (global-set-key (kbd "s-x") 'pasteboard-cut))
+;; (if window-system
+;;     (progn
+;;       (isolate-kill-ring)
+;;       ;; bind CMD+C to pasteboard-copy
+;;       (global-set-key (kbd "s-c") 'pasteboard-copy)
+;;       (define-key whole-line-or-region-local-mode-map (kbd "s-v") 'nil) 
+;;       ;; bind CMD+V to pasteboard-paste
+;;       (global-set-key (kbd "s-v") 'pasteboard-paste)
+;;       (define-key whole-line-or-region-local-mode-map (kbd "s-x") 'nil) 
+;;       ;; bind CMD+X to pasteboard-cut
+;;       (global-set-key (kbd "s-x") 'pasteboard-cut)))
 
   ;; you might also want to assign some keybindings for non-window
   ;; System usage (i.e., in your text terminal, where the
   ;; command->super does not work)
-  )
+
 
 (provide 'my-mac-clipboard-seperation)
 
