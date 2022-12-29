@@ -89,16 +89,6 @@
 (global-set-key "\M-v" 'scroll-down-half)
 (global-set-key "\C-^" 'top-join-line)
 
-(global-set-key "\M-x" 'helm-M-x)
-(global-set-key "\M-i" 'helm-swoop)
-(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
-(global-set-key "\M-y" 'helm-show-kill-ring)
-(global-set-key (kbd "M-`") 'other-frame)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-
 (setq linum-format "%3d ")
 
 (provide 'my-global)

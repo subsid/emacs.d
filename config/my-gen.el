@@ -1,6 +1,6 @@
 ;; Plugins
-(use-package markdown-mode
-  :ensure t)
+; (use-package markdown-mode
+;   :ensure t)
 
 (use-package exec-path-from-shell
   :ensure t
@@ -10,8 +10,8 @@
   (exec-path-from-shell-initialize))
     ))
 
-(use-package yaml-mode
-  :ensure t)
+; (use-package yaml-mode
+;   :ensure t)
 
 (use-package nlinum 
   :ensure t
@@ -31,11 +31,7 @@
   :config
   :mode "\\.dat\\'")
 
-(use-package whole-line-or-region
-  :ensure t
-  :config
-  (whole-line-or-region-mode))
-
+(use-package whole-line-or-region)
 
 ;; Zoom in/out of one buffer.
 (use-package zoom-window
@@ -65,11 +61,11 @@
   :config
   (global-undo-tree-mode 1))
 
-(use-package ox-reveal
-  :ensure t
-  :config
-  (setq org-reveal-root "/Users/subsid/Library/reveal.js")
-  (setq org-reveal-title-slide nil))
+; (use-package ox-reveal
+;   :ensure t
+;   :config
+;   (setq org-reveal-root "/Users/subsid/Library/reveal.js")
+;   (setq org-reveal-title-slide nil))
 
 (provide 'my-gen)
 
