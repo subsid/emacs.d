@@ -31,7 +31,10 @@
   :config
   :mode "\\.dat\\'")
 
-(use-package whole-line-or-region)
+(use-package whole-line-or-region
+  :ensure t
+  :config
+  (whole-line-or-region-global-mode))
 
 ;; Zoom in/out of one buffer.
 (use-package zoom-window

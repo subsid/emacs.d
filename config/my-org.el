@@ -16,28 +16,28 @@
 			       (concat home "/Dropbox/notes/org/work.org")
 			       (concat home "/Dropbox/notes/org/chores.org")))
 
-  (setq org-archive-location "::* Archived Tasks")
-  (setq org-default-notes-file (concat org-directory "/inbox.org"))
-  (setq org-journal-dir (concat org-directory "/journal"))
+;;   (setq org-archive-location "::* Archived Tasks")
+;;   (setq org-default-notes-file (concat org-directory "/inbox.org"))
+;;   (setq org-journal-dir (concat org-directory "/journal"))
 
   (add-to-list 'org-modules 'org-crypt)
 
   (setq org-export-coding-system 'utf-8)
   (setq org-export-allow-bind-keywords 1)
-  (setq capture-journal-location (concat home "/Dropbox/notes/journal.org"))
-  (setq org-capture-templates
-        '(("t" ;hotkey
-           "Tidbit" ; Random Stuff
-           entry ; type
-                                        ;heading type and title
-           (file+headline org-default-notes-file "Inbox")
-           "* %? %t %^G")
-	  ("j"
-	   "Journal entry"
-	   plain
-	   (file+olp+datetree capture-journal-location)
-	   "[%<%H:%M>] %?")
-	  ))
+;;  (setq capture-journal-location (concat home "/Dropbox/notes/journal.org")) ;
+  ;; (setq org-capture-templates
+  ;;       '(("t" ;hotkey
+  ;;          "Tidbit" ; Random Stuff
+  ;;          entry ; type
+  ;;                                       ;heading type and title
+  ;;          (file+headline org-default-notes-file "Inbox")
+  ;;          "* %? %t %^G")
+  ;; 	  ("j"
+  ;; 	   "Journal entry"
+  ;; 	   plain
+  ;; 	   (file+olp+datetree capture-journal-location)
+  ;; 	   "[%<%H:%M>] %?")
+  ;; 	  ))
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
@@ -53,7 +53,7 @@
   (define-key global-map "\C-cl" 'org-store-link)
   (define-key global-map "\C-ca" 'org-agenda)
   ;;org-capture
-  (define-key global-map "\C-cc" 'org-capture)
+;;   (define-key global-map "\C-cc" 'org-capture)
 
   ;; Org babel support for languages
   ;; active Babel languages
@@ -65,12 +65,11 @@
      (ruby . t)
      )))
 
-(use-package htmlize
-  :ensure t)
+;; (use-package htmlize
+;;   :ensure t)
 
 (use-package org-superstar
-   :ensure t)
-
+  :ensure t)
 
 ;; Collapse everything except current tab.
 (defun org-show-current-heading-tidily ()
@@ -91,4 +90,5 @@
 (define-key org-mode-map (kbd  "M-=") 'org-show-current-heading-tidily)
 
 (provide 'my-org)
+
 
