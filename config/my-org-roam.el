@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
+(require 'cl)
 
 ;; Good starting point https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
 (use-package org-roam
@@ -13,7 +14,7 @@
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n")
       :unnarrowed t)
      ("p" "project" plain "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")
@@ -54,9 +55,6 @@
            (my/org-roam-filter-by-tag tag-name)
            (org-roam-node-list))))
 
-(defun my/org-roam-refresh-agenda-list ()
-  (interactive)
-  (setq org-agenda-files (my/org-roam-list-notes-by-tag "Project")))
 
 (defun my/org-roam-project-finalize-hook ()
   "Adds the captured project file to `org-agenda-files' if the
@@ -133,11 +131,41 @@ capture was not aborted."
              (lambda ()
                (when (equal org-state "DONE")
                  (my/org-roam-copy-todo-to-today))
-               (when (equal org-state "INPROGRESS")
-                 (my/org-roam-copy-todo-to-today))
-	       ))
+    ))
 
-;; Build the agenda list the first time for the session
-(my/org-roam-refresh-agenda-list)
+;; Thanks to madnificent - https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html 
+;; Build org-agenda dynamically by finding files that have TODOs
+;; Not usng the org-todos-keywords as I have the shortcuts in the description there.
+(defvar my/org-agenda--todo-keyword-regex
+  (reduce (lambda (cur acc)
+            (concat acc "|" cur))
+          (mapcar (lambda (entry) (concat "\\* " entry))
+                  '("TODO" "INPROGRESS" "DONE")))
+  "Regex which filters all TODO keywords")
+
+(defun my/org-agenda--calculate-files-for-regex (regex)
+  "Yields a fresh array with all files containing todos which match REGEX.
+
+Uses grep to discover all files containing anything stored in
+my/org-agenda--todo-keyword-regex."
+  (remove-if #'file-directory-p
+   (split-string
+    (shell-command-to-string
+     (concat "rg -t org -e '" regex "' -l " org-roam-directory))
+    "\n")))
+
+;; Can slow things down...
+;; (defun org-agenda-all ()
+;;   "Use all files for org-agenda."
+;;   (interactive)
+;;   (setq org-agenda-files (list "~/Dropbox/notes/org_roam")))
+
+(defun my/org-roam-refresh-agenda-list ()
+  (interactive)
+  (setq org-agenda-files (my/org-agenda--calculate-files-for-regex my/org-agenda--todo-keyword-regex)))
+
+
+(advice-add 'org-agenda :before #'my/org-roam-refresh-agenda-list)
+(advice-add 'org-todo-list :before #'my/org-roam-refresh-agenda-list)
 
 (provide 'my-org-roam)

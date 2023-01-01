@@ -19,7 +19,6 @@
 ;;   (setq org-archive-location "::* Archived Tasks")
 ;;   (setq org-default-notes-file (concat org-directory "/inbox.org"))
 ;;   (setq org-journal-dir (concat org-directory "/journal"))
-
   (add-to-list 'org-modules 'org-crypt)
 
   (setq org-export-coding-system 'utf-8)
@@ -63,7 +62,21 @@
    '((python . t)
      (emacs-lisp . nil)
      (ruby . t)
-     )))
+     ))
+  (setq org-agenda-custom-commands
+   '(("x" "daily status"
+      ((agenda ""
+	       ((org-agenda-prefix-format " %i %-12:c%?-12t% s %?e ")
+		(org-agenda-skip-function
+		 '(org-agenda-skip-entry-if 'todo
+					    '("INPROGRESS")))))
+       (tags "TODO=\"INPROGRESS\"" nil)
+   ;;    (tags "TODO=\"TODO\"+SCHEDULED=\"\"" nil))
+      (tags "TODO=\"TODO\"" nil))
+      nil nil)
+     ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
+      ((org-agenda-view-columns-initially t)))))
+  )
 
 ;; (use-package htmlize
 ;;   :ensure t)
