@@ -72,7 +72,8 @@
 					    '("INPROGRESS")))))
        (tags "TODO=\"INPROGRESS\"" nil)
    ;;    (tags "TODO=\"TODO\"+SCHEDULED=\"\"" nil))
-      (tags "TODO=\"TODO\"" nil))
+      (tags "TODO=\"TODO\"-CATEGORY=\"Chores\"" nil)
+      (tags "TODO=\"TODO\"+CATEGORY=\"Chores\"" nil))
       nil nil)
      ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
       ((org-agenda-view-columns-initially t)))))

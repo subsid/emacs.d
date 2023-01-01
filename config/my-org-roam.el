@@ -169,3 +169,4 @@ my/org-agenda--todo-keyword-regex."
 (advice-add 'org-todo-list :before #'my/org-roam-refresh-agenda-list)
 
 (provide 'my-org-roam)
+
