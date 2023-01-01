@@ -58,9 +58,6 @@
   (interactive)
   (setq org-agenda-files (my/org-roam-list-notes-by-tag "Project")))
 
-;; Build the agenda list the first time for the session
-(my/org-roam-refresh-agenda-list)
-
 (defun my/org-roam-project-finalize-hook ()
   "Adds the captured project file to `org-agenda-files' if the
 capture was not aborted."
@@ -135,6 +132,12 @@ capture was not aborted."
 (add-to-list 'org-after-todo-state-change-hook
              (lambda ()
                (when (equal org-state "DONE")
-                 (my/org-roam-copy-todo-to-today))))
+                 (my/org-roam-copy-todo-to-today))
+               (when (equal org-state "INPROGRESS")
+                 (my/org-roam-copy-todo-to-today))
+	       ))
+
+;; Build the agenda list the first time for the session
+(my/org-roam-refresh-agenda-list)
 
 (provide 'my-org-roam)

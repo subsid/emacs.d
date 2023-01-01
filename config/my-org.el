@@ -8,13 +8,13 @@
   (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
   :demand t
   :config
-  (setq org-agenda-files (list (concat home "/Dropbox/notes/org/life.org")
-			       (concat home "/Dropbox/notes/org/learning.org")
-			       (concat home "/Dropbox/notes/org/today.org")
-			       (concat home "/Dropbox/notes/org/books.org")
-			       (concat home "/Dropbox/notes/org/inbox.org")
-			       (concat home "/Dropbox/notes/org/work.org")
-			       (concat home "/Dropbox/notes/org/chores.org")))
+  ;; (setq org-agenda-files (list (concat home "/Dropbox/notes/org/life.org")
+  ;; 			       (concat home "/Dropbox/notes/org/learning.org")
+  ;; 			       (concat home "/Dropbox/notes/org/today.org")
+  ;; 			       (concat home "/Dropbox/notes/org/books.org")
+  ;; 			       (concat home "/Dropbox/notes/org/inbox.org")
+  ;; 			       (concat home "/Dropbox/notes/org/work.org")
+  ;; 			       (concat home "/Dropbox/notes/org/chores.org")))
 
 ;;   (setq org-archive-location "::* Archived Tasks")
 ;;   (setq org-default-notes-file (concat org-directory "/inbox.org"))
