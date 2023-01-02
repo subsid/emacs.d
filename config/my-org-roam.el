@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(require 'cl)
+(require 'cl-lib)
 
 ;; Good starting point https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
 (use-package org-roam
@@ -137,10 +137,10 @@ capture was not aborted."
 ;; Build org-agenda dynamically by finding files that have TODOs
 ;; Not usng the org-todos-keywords as I have the shortcuts in the description there.
 (defvar my/org-agenda--todo-keyword-regex
-  (reduce (lambda (cur acc)
+  (cl-reduce (lambda (cur acc)
             (concat acc "|" cur))
           (mapcar (lambda (entry) (concat "\\* " entry))
-                  '("TODO" "INPROGRESS" "DONE")))
+                  '("TODO" "INPROGRESS")))
   "Regex which filters all TODO keywords")
 
 (defun my/org-agenda--calculate-files-for-regex (regex)
@@ -148,7 +148,7 @@ capture was not aborted."
 
 Uses grep to discover all files containing anything stored in
 my/org-agenda--todo-keyword-regex."
-  (remove-if #'file-directory-p
+  (cl-remove-if #'file-directory-p
    (split-string
     (shell-command-to-string
      (concat "rg -t org -e '" regex "' -l " org-roam-directory))
