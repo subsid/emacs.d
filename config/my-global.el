@@ -9,6 +9,13 @@
 (global-linum-mode 1)
 (scroll-bar-mode -1)
 
+;; Disable UI dialogs
+(setq use-dialog-box nil)
+
+;; Watch files on disk and revert if they change.
+(setq global-auto-revert-non-file-buffers t)
+(global-auto-revert-mode 1)
+
 ;; enable recentf mode
 (recentf-mode 1)
 

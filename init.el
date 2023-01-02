@@ -24,7 +24,6 @@
 (require 'my-global)
 ; (require 'my-mac-clipboard-seperation)
 ; (require 'my-projects)
-(require 'my-eyecandy)
 ;;(require 'my-evil)
 ;;(require 'evil-bypass-clipboard)
 ; (require 'my-elisp)
@@ -46,4 +45,4 @@
 
 ;; snippets
 ;; (require 'my-snippets)
-
+(require 'my-eyecandy)
