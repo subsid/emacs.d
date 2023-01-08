@@ -5,7 +5,7 @@
   :init
   (setq home (shell-command-to-string "printf %s \"$HOME\""))
   (setq org-directory (concat home "/Dropbox/notes"))
-  (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)" "CANCELLED(c)")))
   :demand t
   :config
   ;; (setq org-agenda-files (list (concat home "/Dropbox/notes/org/life.org")
@@ -21,6 +21,7 @@
 ;;   (setq org-journal-dir (concat org-directory "/journal"))
   (add-to-list 'org-modules 'org-crypt)
 
+  (setq org-agenda-show-future-repeats 'next)
   (setq org-export-coding-system 'utf-8)
   (setq org-export-allow-bind-keywords 1)
 ;;  (setq capture-journal-location (concat home "/Dropbox/notes/journal.org")) ;
@@ -49,6 +50,8 @@
   ;;
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate)
+  ;; Default binds to fill-paragraph. I usually want truncate lines and wrapping.
+  (define-key org-mode-map "\M-q" 'toggle-truncate-lines)
   (define-key global-map "\C-cl" 'org-store-link)
   (define-key global-map "\C-ca" 'org-agenda)
   ;;org-capture
@@ -69,11 +72,10 @@
 	       ((org-agenda-prefix-format " %i %-12:c%?-12t% s %?e ")
 		(org-agenda-skip-function
 		 '(org-agenda-skip-entry-if 'todo
-					    '("INPROGRESS")))))
-       (tags "TODO=\"INPROGRESS\"" nil)
+					    '("DOING")))))
+       (tags "TODO=\"DOING\"" nil)
    ;;    (tags "TODO=\"TODO\"+SCHEDULED=\"\"" nil))
-      (tags "TODO=\"TODO\"-CATEGORY=\"Chores\"" nil)
-      (tags "TODO=\"TODO\"+CATEGORY=\"Chores\"" nil))
+      (tags "TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\"" nil))
       nil nil)
      ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
       ((org-agenda-view-columns-initially t)))))

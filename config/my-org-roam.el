@@ -9,15 +9,21 @@
   :custom
   (org-roam-directory (concat home "/Dropbox/notes/org_roam"))
   (org-roam-dailies-directory "journals/")
+  (org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n\n* Pre-Lunch\n* Post-Lunch\n* Evening"))))
   (org-roam-completion-everywhere t)
   (completion-ignore-case t)
+  (org-roam-file-exclude-regexp "logseq/")
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n")
+      :if-new (file+head "pages/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n")
       :unnarrowed t)
      ("p" "project" plain "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")
+      :if-new (file+head "pages/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")
       :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -90,7 +96,7 @@ capture was not aborted."
   (interactive)
   (org-roam-capture- :node (org-roam-node-create)
                      :templates '(("i" "inbox" plain "* %?"
-                                  :if-new (file+head "Inbox.org" "#+title: Inbox\n")))))
+                                  :if-new (file+head "pages/Inbox.org" "#+title: Inbox\n")))))
 
 ;; Add tasks to specific projects
 (defun my/org-roam-capture-task ()
@@ -102,8 +108,8 @@ capture was not aborted."
   (org-roam-capture- :node (org-roam-node-read
                             nil
                             (my/org-roam-filter-by-tag "Project"))
-                     :templates '(("p" "project" plain "* TODO %?"
-                                   :if-new (file+head+olp "%<%Y%m%d%H%M%S>-${slug}.org"
+                     :templates '(("p" "project" plain "** TODO %?"
+                                   :if-new (file+head+olp "pages/%<%Y%m%d%H%M%S>-${slug}.org"
                                                           "#+title: ${title}\n#+category: ${title}\n#+filetags: Project"
                                                           ("Tasks"))))))
 
@@ -140,7 +146,7 @@ capture was not aborted."
   (cl-reduce (lambda (cur acc)
             (concat acc "|" cur))
           (mapcar (lambda (entry) (concat "\\* " entry))
-                  '("TODO" "INPROGRESS")))
+                  '("TODO" "DOING")))
   "Regex which filters all TODO keywords")
 
 (defun my/org-agenda--calculate-files-for-regex (regex)
@@ -151,7 +157,7 @@ my/org-agenda--todo-keyword-regex."
   (cl-remove-if #'file-directory-p
    (split-string
     (shell-command-to-string
-     (concat "rg -t org -e '" regex "' -l " org-roam-directory))
+     (concat "rg -t org -e '" regex "' -l " org-roam-directory " -g '!logseq/'"))
     "\n")))
 
 ;; Can slow things down...

@@ -12,6 +12,9 @@
 ;; Disable UI dialogs
 (setq use-dialog-box nil)
 
+;; Disable some mouse bindings. 
+(global-unset-key [C-down-mouse-1])
+
 ;; Watch files on disk and revert if they change.
 (setq global-auto-revert-non-file-buffers t)
 (global-auto-revert-mode 1)

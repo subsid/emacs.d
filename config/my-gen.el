@@ -24,12 +24,31 @@
 		      (length (number-to-string
 			       (count-lines (point-min) (point-max)))))))))
 
+
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1))
+
 (use-package ledger-mode
   :ensure t
   :init
   (setq ledger-clear-whole-transactions 1)
-  :config
-  :mode "\\.dat\\'")
+  :custom
+  (ledger-reports
+   (quote
+    (("liabilities-reimbursements" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal Liabilities --depth 2")
+     ("budget-year" "%(binary) --budget --add-budget -p \"this year\" -f ~/Dropbox/notes/finance/ledger.dat register Expenses")
+     ("bal" "ledger -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2")
+     ("personal-budget" "%(binary) --budget -p \"this month\" -f ~/Dropbox/notes/finance/ledger.dat register Expenses:Personal")
+     ("reg-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and Expenses")
+     ("unbudgeted" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat --unbudgeted -p \"this month\" register not Exnnpenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and not Expenses:Rent:.*:Deposit$ and Expenses")
+     ("budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat --budget -p \"this month\" register not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenppses:Interview and not Expenses:Rent:.*:Deposit$ and Expenses")
+     ("creditcard" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat cleared Liabilities:CreditCard --empty --depth 3")
+     ("forecast-budget" "ledger -f ~/Dropbox/notes/finance/ledger.dat -p \"from this year\" --forecast \"d<[2019]\" bal Expenses --depth 2")
+     ("networth" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 ^assets ^liabilities"))))
+  :mode "\\.dat\\'"
+  )
 
 (use-package whole-line-or-region
   :ensure t
