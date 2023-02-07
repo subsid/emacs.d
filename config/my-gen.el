@@ -8,6 +8,8 @@
   (progn
     (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+    (when (daemonp)
+      (exec-path-from-shell-initialize))
     ))
 
 ; (use-package yaml-mode
@@ -24,11 +26,12 @@
 		      (length (number-to-string
 			       (count-lines (point-min) (point-max)))))))))
 
-
 (use-package beacon
   :ensure t
   :config
-  (beacon-mode 1))
+  (beacon-mode 1)
+  (global-set-key (kbd "C-\\") 'beacon-blink)
+)
 
 (use-package ledger-mode
   :ensure t
@@ -81,8 +84,27 @@
 (use-package undo-tree
   :ensure t
   :config
-  (global-undo-tree-mode 1))
+  (global-undo-tree-mode 1)
+  :custom
+  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+)
 
+
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
+
+;; Optionally use the `orderless' completion style.
+(use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
 ; (use-package ox-reveal
 ;   :ensure t
 ;   :config
@@ -90,5 +112,4 @@
 ;   (setq org-reveal-title-slide nil))
 
 (provide 'my-gen)
-
 

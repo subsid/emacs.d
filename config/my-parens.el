@@ -1,10 +1,29 @@
+;; Taken from this awesome demo https://ebzzry.com/en/emacs-pairs_/
 (use-package smartparens-config
   :ensure smartparens
   :config
   (progn
+    (smartparens-strict-mode t)
     (show-smartparens-global-mode t)
     (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-    (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode))
+    (global-unset-key (kbd "C-<right>"))
+    (global-unset-key (kbd "M-<right>"))
+    (global-unset-key (kbd "C-<left>"))
+    (global-unset-key (kbd "M-<left>"))
+    ;; Define new pairs
+    (setq sp-pairs nil)
+    (sp-pair "_" "_" :wrap "C-c _")
+    (sp-pair "(" ")" :wrap "C-c (")
+    (sp-pair "[" "]" :wrap "C-c [" )
+    (sp-pair "{" "}" :wrap "C-c {" )
+    (sp-pair "'" "'" :wrap "C-c '" )
+    (sp-pair "\"" "\"" :wrap "C-c \"")
+    (sp-pair "`" "`" :wrap "C-c `" )
+    (sp-pair "_" "_" :wrap "C-c _" )
+    (sp-pair "*" "*" :wrap "C-c *" )
+    (sp-pair "~" "~" :wrap "C-c ~" )
+    (sp-pair "$" "$" :wrap "C-c $" )
+    (sp-pair "/" "/" :wrap "C-c /" ))
   (bind-keys
    :map smartparens-mode-map
    ("C-M-a" . sp-beginning-of-sexp)
@@ -15,43 +34,42 @@
    ("M-<down>" . sp-backward-down-sexp)
    ("M-<up>"   . sp-backward-up-sexp)
 
-   ("C-M-f" . sp-forward-sexp)
-   ("C-M-b" . sp-backward-sexp)
+   ;; ("C-M-f" . sp-forward-sexp)
+   ;; ("C-M-b" . sp-backward-sexp)
 
    ("C-M-n" . sp-next-sexp)
    ("C-M-p" . sp-previous-sexp)
 
-   ("C-S-f" . sp-forward-symbol)
-   ("C-S-b" . sp-backward-symbol)
+   ;; ("C-S-f" . sp-forward-symbol)
+   ;; ("C-S-b" . sp-backward-symbol)
 
-   ("C-<right>" . sp-forward-slurp-sexp)
-   ("M-<right>" . sp-forward-barf-sexp)
-   ("C-<left>"  . sp-backward-slurp-sexp)
-   ("M-<left>"  . sp-backward-barf-sexp)
+
+   ("C-c l" . sp-forward-slurp-sexp)
+   ("M-c l" . sp-forward-barf-sexp)
+   ("C-c h"  . sp-backward-slurp-sexp)
+   ("M-c h"  . sp-backward-barf-sexp)
 
    ("C-M-t" . sp-transpose-sexp)
    ("C-M-k" . sp-kill-sexp)
    ("C-k"   . sp-kill-hybrid-sexp)
    ("M-k"   . sp-backward-kill-sexp)
    ("C-M-w" . sp-copy-sexp)
-
-   ("C-M-d" . delete-sexp)
-
-   ("M-<backspace>" . backward-kill-word)
-   ("C-<backspace>" . sp-backward-kill-word)
-   ([remap sp-backward-kill-word] . backward-kill-word)
+   
+   ;; ("M-<backspace>" . backward-kill-word)
+   ;; ("C-<backspace>" . sp-backward-kill-word)
+   ;; ([remap sp-backward-kill-word] . backward-kill-word)
 
    ("M-[" . sp-backward-unwrap-sexp)
    ("M-]" . sp-unwrap-sexp)
 
-   ("C-x C-t" . sp-transpose-hybrid-sexp)
+   ;;   ("C-x C-t" . sp-transpose-hybrid-sexp)
+   )
+  )
 
-   ("C-c ("  . wrap-with-parens)
-   ("C-c ["  . wrap-with-brackets)
-   ("C-c {"  . wrap-with-braces)
-   ("C-c '"  . wrap-with-single-quotes)
-   ("C-c \"" . wrap-with-double-quotes)
-   ("C-c _"  . wrap-with-underscores)
-   ("C-c `"  . wrap-with-back-quotes)))
+;; (defun wrap-pair (pair)
+;;   (interactive "sPair: ")
+;;   (if (assoc pair sp-pair-list)
+;;       (sp-wrap-with-pair pair)
+;;     (message "Pair is not defined")))
 
 (provide 'my-parens)

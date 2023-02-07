@@ -6,6 +6,7 @@
   (setq home (shell-command-to-string "printf %s \"$HOME\""))
   (setq org-directory (concat home "/Dropbox/notes"))
   (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-hide-emphasis-markers t)
   :demand t
   :config
   ;; (setq org-agenda-files (list (concat home "/Dropbox/notes/org/life.org")
@@ -16,7 +17,7 @@
   ;; 			       (concat home "/Dropbox/notes/org/work.org")
   ;; 			       (concat home "/Dropbox/notes/org/chores.org")))
 
-;;   (setq org-archive-location "::* Archived Tasks")
+  (setq org-archive-location "::* Archived Tasks")
 ;;   (setq org-default-notes-file (concat org-directory "/inbox.org"))
 ;;   (setq org-journal-dir (concat org-directory "/journal"))
   (add-to-list 'org-modules 'org-crypt)
@@ -38,6 +39,9 @@
   ;; 	   (file+olp+datetree capture-journal-location)
   ;; 	   "[%<%H:%M>] %?")
   ;; 	  ))
+
+  ;; Support markdown export
+  (require 'ox-md)
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
@@ -52,6 +56,11 @@
   (org-clock-persistence-insinuate)
   ;; Default binds to fill-paragraph. I usually want truncate lines and wrapping.
   (define-key org-mode-map "\M-q" 'toggle-truncate-lines)
+  (define-key org-mode-map (kbd "C-c C-k") nil)
+  (define-key org-mode-map (kbd "C-c *") nil)
+  (define-key org-mode-map (kbd "C-c $") nil)
+  (define-key org-mode-map (kbd "C-c ,") nil)
+  (define-key org-mode-map (kbd "C-c /") nil)
   (define-key global-map "\C-cl" 'org-store-link)
   (define-key global-map "\C-ca" 'org-agenda)
   ;;org-capture
@@ -63,8 +72,10 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t)
-     (emacs-lisp . nil)
-     (ruby . t)
+     (emacs-lisp . t)
+     (awk . t)
+     (shell . t)
+     (sed . t)
      ))
   (setq org-agenda-custom-commands
    '(("x" "daily status"
@@ -80,7 +91,6 @@
      ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
       ((org-agenda-view-columns-initially t)))))
   )
-
 ;; (use-package htmlize
 ;;   :ensure t)
 
@@ -103,7 +113,38 @@
     (org-show-entry)
     (show-children)))
 
+(use-package easy-hugo
+  :ensure t
+  :init
+  (setq easy-hugo-basedir "~/workspace/subsid.github.io/")
+  (setq easy-hugo-url "https://subsid.github.io")
+  (setq easy-hugo-sshdomain nil)
+  (setq easy-hugo-default-ext ".org")
+  (setq easy-hugo-postdir "content/posts")
+  (setq easy-hugo-server-flags "-D")
+;  (setq easy-hugo-previewtime "300")
+;;  :bind ("C-c C-k" . easy-hugo)
+ (setq easy-hugo-image-directory "img")
+ (define-key global-map (kbd "C-c C-k") 'easy-hugo)
+)
+
 (define-key org-mode-map (kbd  "M-=") 'org-show-current-heading-tidily)
+
+
+;; From https://ag91.github.io/blog/2019/07/01/how-to-jump-to-next-bullet-point-in-org-mode/
+(defun my-org/next-entry-or-next-visible-header ()
+  (interactive)
+  (condition-case err
+      (org-next-item)
+    (error (org-next-visible-heading 1))))
+(define-key org-mode-map (kbd "C-c C-n") #'my-org/next-entry-or-next-visible-header)
+
+(defun my-org/previous-entry-or-previous-visible-header ()
+  (interactive)
+  (condition-case err
+      (org-previous-item)
+    (error (org-previous-visible-heading 1))))
+(define-key org-mode-map (kbd "C-c C-p") #'my-org/previous-entry-or-previous-visible-header)
 
 (provide 'my-org)
 
