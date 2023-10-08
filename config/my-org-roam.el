@@ -13,7 +13,7 @@
       '(("d" "default" entry
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n\n* Pre-Lunch\n* Post-Lunch\n* Evening"))))
+                            "#+title: %<%Y-%m-%d>\n\n* Plans for the day\n* Notes"))))
   (org-roam-completion-everywhere t)
   (completion-ignore-case t)
   (org-roam-file-exclude-regexp "logseq/")
@@ -152,7 +152,7 @@ capture was not aborted."
 (defun my/org-agenda--calculate-files-for-regex (regex)
   "Yields a fresh array with all files containing todos which match REGEX.
 
-Uses grep to discover all files containing anything stored in
+Uses ripgrep to discover all files containing anything stored in
 my/org-agenda--todo-keyword-regex."
   (cl-remove-if #'file-directory-p
    (split-string

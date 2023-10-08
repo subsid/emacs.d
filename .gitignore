@@ -18,3 +18,5 @@ org-clock-save.el
 *.db
 *.org-id-locations
 *cache/
+projects
+history

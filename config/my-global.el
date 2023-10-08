@@ -30,6 +30,12 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Separate system and emacs kill-ring
+(set 'select-enable-primary nil)
+(set 'select-enable-clipboard nil)
+(global-set-key (kbd "C-c w") 'clipboard-kill-ring-save)
+(global-set-key (kbd "C-c y") 'clipboard-yank)
+
 ;; Dont litter my project folder!! 
 (defvar my-auto-save-folder "~/.emacs.d/.saves/"
   "Directory used for Emacs backups.")

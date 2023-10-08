@@ -37,6 +37,8 @@
   :ensure t
   :init
   (setq ledger-clear-whole-transactions 1)
+  (setq ledger-accounts-file "~/Dropbox/notes/finance/accounts.dat")
+  (setq ledger-complete-in-steps t)
   :custom
   (ledger-reports
    (quote
@@ -105,11 +107,6 @@
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
-; (use-package ox-reveal
-;   :ensure t
-;   :config
-;   (setq org-reveal-root "/Users/subsid/Library/reveal.js")
-;   (setq org-reveal-title-slide nil))
 
 (provide 'my-gen)
 

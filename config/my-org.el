@@ -77,6 +77,7 @@
      (shell . t)
      (sed . t)
      ))
+  (setq org-confirm-babel-evaluate nil)
   (setq org-agenda-custom-commands
    '(("x" "daily status"
       ((agenda ""
@@ -90,6 +91,12 @@
       nil nil)
      ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
       ((org-agenda-view-columns-initially t)))))
+  
+
+  ;; Prevents src code-blocks from indenting at the start.
+  ;; https://www.reddit.com/r/orgmode/comments/mj6rg2/python_indentation_in_source_block/
+  (setq python-indent-offset 0)
+  (setq org-edit-src-content-indentation 0)
   )
 ;; (use-package htmlize
 ;;   :ensure t)
@@ -113,10 +120,16 @@
     (org-show-entry)
     (show-children)))
 
+(use-package ox-reveal
+  :ensure t
+  :config
+  (setq org-reveal-root "/home/ssubramaniyam/workspace/reveal.js")
+  (setq org-reveal-title-slide nil))
+
 (use-package easy-hugo
   :ensure t
   :init
-  (setq easy-hugo-basedir "~/workspace/subsid.github.io/")
+  (setq easy-hugo-basedir "~/Dropbox/notes/org_roam/subsid.github.io/")
   (setq easy-hugo-url "https://subsid.github.io")
   (setq easy-hugo-sshdomain nil)
   (setq easy-hugo-default-ext ".org")
@@ -130,21 +143,20 @@
 
 (define-key org-mode-map (kbd  "M-=") 'org-show-current-heading-tidily)
 
-
 ;; From https://ag91.github.io/blog/2019/07/01/how-to-jump-to-next-bullet-point-in-org-mode/
-(defun my-org/next-entry-or-next-visible-header ()
-  (interactive)
-  (condition-case err
-      (org-next-item)
-    (error (org-next-visible-heading 1))))
-(define-key org-mode-map (kbd "C-c C-n") #'my-org/next-entry-or-next-visible-header)
+;; (defun my-org/next-entry-or-next-visible-header ()
+;;   (interactive)
+;;   (condition-case err
+;;       (org-next-item)
+;;     (error (org-next-visible-heading 1))))
+;; (define-key org-mode-map (kbd "C-c C-n") #'my-org/next-entry-or-next-visible-header)
 
-(defun my-org/previous-entry-or-previous-visible-header ()
-  (interactive)
-  (condition-case err
-      (org-previous-item)
-    (error (org-previous-visible-heading 1))))
-(define-key org-mode-map (kbd "C-c C-p") #'my-org/previous-entry-or-previous-visible-header)
+;; (defun my-org/previous-entry-or-previous-visible-header ()
+;;   (interactive)
+;;   (condition-case err
+;;       (org-previous-item)
+;;     (error (org-previous-visible-heading 1))))
+;; (define-key org-mode-map (kbd "C-c C-p") #'my-org/previous-entry-or-previous-visible-header)
 
 (provide 'my-org)
 

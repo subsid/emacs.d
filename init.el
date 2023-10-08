@@ -36,9 +36,9 @@
 (require 'my-org-roam)
 (require 'my-auto-complete)
 ;; (require 'my-coffee)
-; (require 'my-leader-keys)
-; (require 'my-path)
-(require 'my-parens)
+;; (require 'my-leader-keys)
+;; (require 'my-path)
+;; (require 'my-parens)
 
 ;; Language
 ;; (require 'my-clojure)
@@ -52,10 +52,35 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ledger-reports
+   '(("liabilities-reimbursements" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal Liabilities --depth 2")
+     ("budget-year" "%(binary) --budget --add-budget -p \"this year\" -f ~/Dropbox/notes/finance/ledger.dat register Expenses and not Expenses:Taxes")
+     ("bal" "ledger -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2")
+     ("personal-budget" "%(binary) --budget -p \"this month\" -f ~/Dropbox/notes/finance/ledger.dat register Expenses:Personal")
+     ("reg-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and Expenses")
+     ("unbudgeted" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat --unbudgeted -p \"this month\" register not Exnnpenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and not Expenses:Rent:.*:Deposit$ and Expenses")
+     ("budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat --budget -p \"this month\" register not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenppses:Interview and not Expenses:Rent:.*:Deposit$ and Expenses")
+     ("creditcard" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat cleared Liabilities:CreditCard --empty --depth 3")
+     ("forecast-budget" "ledger -f ~/Dropbox/notes/finance/ledger.dat -p \"from this year\" --forecast \"d<[2019]\" bal Expenses --depth 2")
+     ("networth" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 ^assets ^liabilities")
+     ("Invesments" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:Schwab:Brokerage Assets:Investments")))
+ '(org-agenda-custom-commands
+   '(("x" "daily status"
+      ((agenda ""
+	       ((org-agenda-prefix-format " %i %-12:c%?-12t% s %?e ")
+		(org-agenda-skip-function
+		 '(org-agenda-skip-entry-if 'todo
+					    '("DOING")))))
+       (tags "TODO=\"DOING\"" nil)
+       (tags "TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\"" nil))
+      nil nil)
+     ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
+      ((org-agenda-view-columns-initially t)))))
  '(org-agenda-files
-   '("~/workspace/subsid.github.io/content/posts/2019-02-20-sed-rename.org" "/home/sid/Dropbox/notes/org_roam/pages/20230120234155-linux_hacks.org" "/home/sid/Dropbox/notes/org_roam/pages/20221230110743-wedding.org" "/home/sid/Dropbox/notes/org_roam/pages/20221230163349-tasks.org" "/home/sid/Dropbox/notes/org_roam/pages/20221229153746-karpathy_videos.org" "/home/sid/Dropbox/notes/org_roam/pages/20230106090140-12in23.org" "/home/sid/Dropbox/notes/org_roam/pages/20221230163215-emacs.org" "/home/sid/Dropbox/notes/org_roam/pages/20230110003719-dad_visa.org" "/home/sid/Dropbox/notes/org_roam/pages/20221230162940-chores.org" "/home/sid/Dropbox/notes/org_roam/pages/20230106010312-taxes.org" "/home/sid/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
+   '("~/workspace/subsid.github.io/content/posts/2019-02-20-sed-rename.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230120234155-linux_hacks.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230110743-wedding.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163349-tasks.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221229153746-karpathy_videos.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106090140-12in23.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163215-emacs.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230110003719-dad_visa.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230162940-chores.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106010312-taxes.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
  '(package-selected-packages
-   '(consult smartparens easy-hugo orderless vertico zoom-window zenburn-theme whole-line-or-region use-package undo-tree org-superstar org-roam-ui nlinum ledger-mode helm expand-region exec-path-from-shell doom-themes company beacon ace-window)))
+   '(ox-reveal consult smartparens easy-hugo orderless vertico zoom-window zenburn-theme whole-line-or-region use-package undo-tree org-superstar org-roam-ui nlinum helm expand-region exec-path-from-shell doom-themes company beacon ace-window))
+ '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
