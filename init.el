@@ -54,16 +54,21 @@
  ;; If there is more than one, they won't work right.
  '(ledger-reports
    '(("liabilities-reimbursements" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal Liabilities --depth 2")
-     ("budget-year" "%(binary) --budget --add-budget -p \"this year\" -f ~/Dropbox/notes/finance/ledger.dat register Expenses and not Expenses:Taxes")
-     ("bal" "ledger -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2")
-     ("personal-budget" "%(binary) --budget -p \"this month\" -f ~/Dropbox/notes/finance/ledger.dat register Expenses:Personal")
-     ("reg-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and Expenses")
-     ("unbudgeted" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat --unbudgeted -p \"this month\" register not Exnnpenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenses:Interview and not Expenses:Rent:.*:Deposit$ and Expenses")
-     ("budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat --budget -p \"this month\" register not Expenses:Phone and not Expenses:Holiday and not Expenses:Masters:Fees and not Expenses:Urgent and not Expenppses:Interview and not Expenses:Rent:.*:Deposit$ and Expenses")
+     ("bal" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2")
+     ("reg-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Taxes and Expenses")
+     ("monthly-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Taxes and Expenses")
+     ("monthly-include-unbudgeted" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" --add-budget not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses")
+     ("monthly-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses")
+     ("yearly-only-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\" '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)'")
      ("creditcard" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat cleared Liabilities:CreditCard --empty --depth 3")
-     ("forecast-budget" "ledger -f ~/Dropbox/notes/finance/ledger.dat -p \"from this year\" --forecast \"d<[2019]\" bal Expenses --depth 2")
-     ("networth" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 ^assets ^liabilities")
-     ("Invesments" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:Schwab:Brokerage Assets:Investments")))
+     ("networth" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 ^assets ^liabilities --market")
+     ("investments" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:Schwab:Brokerage Assets:Investments")
+     ("revenue" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal -p \"this year\" --depth 2 Revenues")
+     ("investment-portfolio" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --percent --market --depth 3 Assets:Bank Assets:Investments")
+     ("yearly-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\" --add-budget Expenses and not Expenses:Taxes and not Expenses:Benefits --depth 2")
+     ("revenue-nonsalary" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 3 not Revenues:.*:Paycheck and Revenues")
+     ("revenue-minus-taxes" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 Revenues Expenses:Taxes:")
+     ("bank-bals" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:*")))
  '(org-agenda-custom-commands
    '(("x" "daily status"
       ((agenda ""
