@@ -124,7 +124,15 @@
   :ensure t
   :config
   (setq org-reveal-root "/home/ssubramaniyam/workspace/reveal.js")
-  (setq org-reveal-title-slide nil))
+  (setq org-reveal-title-slide nil)
+  ;; http://rwx.io/posts/org-export-configurations/
+  (defvar org-export-output-directory-prefix "/home/ssubramaniyam/Dropbox/notes/exports/export_" "prefix of directory used for org-mode export")
+  (defadvice org-export-output-file-name (before org-add-export-dir activate)
+      "Modifies org-export to place exported files in a different directory"
+      (when (not pub-dir)
+          (setq pub-dir (concat org-export-output-directory-prefix (substring extension 1)))
+          (when (not (file-directory-p pub-dir))
+            (make-directory pub-dir)))))
 
 (use-package easy-hugo
   :ensure t

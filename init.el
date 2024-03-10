@@ -53,22 +53,23 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ledger-reports
-   '(("liabilities-reimbursements" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal Liabilities --depth 2")
+   '(("yearly-expenses" "ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
+     ("liabilities-reimbursements" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal Liabilities --depth 2")
      ("bal" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2")
-     ("reg-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Taxes and Expenses")
      ("monthly-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Taxes and Expenses")
-     ("monthly-include-unbudgeted" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" --add-budget not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses")
-     ("monthly-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses")
-     ("yearly-only-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\" '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)'")
+     ("monthly-include-unbudgeted" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" --add-budget not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
+     ("monthly-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
+     ("yearly-only-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\" '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' -X $")
      ("creditcard" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat cleared Liabilities:CreditCard --empty --depth 3")
      ("networth" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 ^assets ^liabilities --market")
      ("investments" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:Schwab:Brokerage Assets:Investments")
      ("revenue" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal -p \"this year\" --depth 2 Revenues")
      ("investment-portfolio" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --percent --market --depth 3 Assets:Bank Assets:Investments")
-     ("yearly-budget" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\" --add-budget Expenses and not Expenses:Taxes and not Expenses:Benefits --depth 2")
+     ("yearly-budget-all" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\"  --depth 2 -X $ --add-budget not Expenses:Taxes and not Expenses:Benefits and Expenses")
      ("revenue-nonsalary" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 3 not Revenues:.*:Paycheck and Revenues")
      ("revenue-minus-taxes" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 Revenues Expenses:Taxes:")
-     ("bank-bals" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:*")))
+     ("bank-bals" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo")
+     ("yearly-holiday" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2024")))
  '(org-agenda-custom-commands
    '(("x" "daily status"
       ((agenda ""

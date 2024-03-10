@@ -38,6 +38,7 @@
   :init
   (setq ledger-clear-whole-transactions 1)
   (setq ledger-accounts-file "~/Dropbox/notes/finance/accounts.dat")
+  (setq ledger-init-file-name "~/notes/finance/.ledgerrc")
   (setq ledger-complete-in-steps t)
   :custom
   (ledger-reports
