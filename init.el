@@ -69,7 +69,8 @@
      ("revenue-nonsalary" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 3 not Revenues:.*:Paycheck and Revenues")
      ("revenue-minus-taxes" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 Revenues Expenses:Taxes:")
      ("bank-bals" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo")
-     ("yearly-holiday" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2024")))
+     ("yearly-holiday" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2024")
+     ("benefits" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal -p \"this year\" --depth 4 Expenses:Benefits")))
  '(org-agenda-custom-commands
    '(("x" "daily status"
       ((agenda ""
