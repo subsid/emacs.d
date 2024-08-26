@@ -134,21 +134,6 @@
           (when (not (file-directory-p pub-dir))
             (make-directory pub-dir)))))
 
-(use-package easy-hugo
-  :ensure t
-  :init
-  (setq easy-hugo-basedir "~/Dropbox/notes/org_roam/subsid.github.io/")
-  (setq easy-hugo-url "https://subsid.github.io")
-  (setq easy-hugo-sshdomain nil)
-  (setq easy-hugo-default-ext ".org")
-  (setq easy-hugo-postdir "content/posts")
-  (setq easy-hugo-server-flags "-D")
-;  (setq easy-hugo-previewtime "300")
-;;  :bind ("C-c C-k" . easy-hugo)
- (setq easy-hugo-image-directory "img")
- (define-key global-map (kbd "C-c C-k") 'easy-hugo)
-)
-
 (define-key org-mode-map (kbd  "M-=") 'org-show-current-heading-tidily)
 
 ;; From https://ag91.github.io/blog/2019/07/01/how-to-jump-to-next-bullet-point-in-org-mode/

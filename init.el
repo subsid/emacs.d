@@ -72,21 +72,21 @@
      ("yearly-holiday" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2024")
      ("benefits" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal -p \"this year\" --depth 4 Expenses:Benefits")))
  '(org-agenda-custom-commands
-   '(("x" "daily status"
+   '(("x" "daily status - what is happening this week"
       ((agenda ""
 	       ((org-agenda-prefix-format " %i %-12:c%?-12t% s %?e ")
 		(org-agenda-skip-function
 		 '(org-agenda-skip-entry-if 'todo
 					    '("DOING")))))
-       (tags "TODO=\"DOING\"" nil)
-       (tags "TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\"" nil))
-      nil nil)
+       (tags "TODO=\"DOING\"" nil))
+      nil)
      ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
-      ((org-agenda-view-columns-initially t)))))
+      ((org-agenda-view-columns-initially t)))
+     ("t" "Unplanned TODOs   " tags-todo "TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\"" nil)))
  '(org-agenda-files
    '("~/workspace/subsid.github.io/content/posts/2019-02-20-sed-rename.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230120234155-linux_hacks.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230110743-wedding.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163349-tasks.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221229153746-karpathy_videos.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106090140-12in23.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163215-emacs.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230110003719-dad_visa.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230162940-chores.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106010312-taxes.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
  '(package-selected-packages
-   '(ox-reveal consult smartparens easy-hugo orderless vertico zoom-window zenburn-theme whole-line-or-region use-package undo-tree org-superstar org-roam-ui nlinum helm expand-region exec-path-from-shell doom-themes company beacon ace-window))
+   '(ox-reveal consult zoom-window use-package undo-tree org-superstar org-roam-ui nlinum expand-region exec-path-from-shell doom-themes company beacon ace-window))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

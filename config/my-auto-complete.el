@@ -30,7 +30,20 @@
   :ensure t
   :config
   (global-set-key (kbd "C-x b") 'consult-buffer)
-  )
+  (global-set-key (kbd "C-c r") #'my/consult-ripgrep-in-directory)
+  (global-set-key (kbd "C-c f") #'my/consult-find-in-subdirectories)
+)
+
+(defun my/consult-find-in-subdirectories ()
+  "Use `consult-find` to search for files in the current directory and its subdirectories."
+  (interactive)
+  (let ((dir (read-directory-name "Find directory: ")))
+    (consult-fd dir)))
+
+(defun my/consult-ripgrep-in-directory (dir)
+  "Run `consult-ripgrep` in a specific directory DIR."
+  (interactive "DRipGrepDirectory: ")
+  (consult-ripgrep dir))
 
 (defvar-local consult-toggle-preview-orig nil)
 

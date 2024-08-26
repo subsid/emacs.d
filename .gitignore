@@ -20,3 +20,5 @@ org-clock-save.el
 *cache/
 projects
 history
+# Temporary files
+.#*
