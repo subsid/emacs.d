@@ -52,6 +52,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ledger-accounts-file "/home/ssubramaniyam/Dropbox/notes/finance/accounts.dat")
  '(ledger-reports
    '(("yearly-expenses" "ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
      ("liabilities-reimbursements" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal Liabilities --depth 2")
@@ -86,7 +87,7 @@
  '(org-agenda-files
    '("~/workspace/subsid.github.io/content/posts/2019-02-20-sed-rename.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230120234155-linux_hacks.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230110743-wedding.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163349-tasks.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221229153746-karpathy_videos.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106090140-12in23.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163215-emacs.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230110003719-dad_visa.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230162940-chores.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106010312-taxes.org" "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
  '(package-selected-packages
-   '(ox-reveal consult zoom-window use-package undo-tree org-superstar org-roam-ui nlinum expand-region exec-path-from-shell doom-themes company beacon ace-window))
+   '(ledger-mode 0blayout ox-reveal consult zoom-window use-package undo-tree org-superstar org-roam-ui nlinum expand-region exec-path-from-shell doom-themes company beacon ace-window))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

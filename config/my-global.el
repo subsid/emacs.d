@@ -6,7 +6,7 @@
 (visual-line-mode 1)
 (setq require-final-newline t)
 (tool-bar-mode -1)
-(global-linum-mode 1)
+(global-nlinum-mode 1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (set-fringe-mode 2)
@@ -108,7 +108,8 @@
 (global-set-key "\M-v" 'scroll-down-half)
 (global-set-key "\C-^" 'top-join-line)
 
-(setq linum-format "%3d ")
+;; (setq linum-format "%3d ")
+(setq nlinum-format "%3d ")
 
 (provide 'my-global)
 

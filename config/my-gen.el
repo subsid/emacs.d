@@ -37,8 +37,8 @@
   :ensure t
   :init
   (setq ledger-clear-whole-transactions 1)
-  (setq ledger-accounts-file "~/Dropbox/notes/finance/accounts.dat")
-  (setq ledger-init-file-name "~/notes/finance/.ledgerrc")
+  (setq ledger-accounts-file (expand-file-name "~/Dropbox/notes/finance/accounts.dat"))
+  (setq ledger-init-file-name (expand-file-name "~/Dropbox/notes/finance/.ledgerrc"))
   (setq ledger-complete-in-steps t)
   :custom
   (ledger-reports
@@ -54,6 +54,12 @@
      ("forecast-budget" "ledger -f ~/Dropbox/notes/finance/ledger.dat -p \"from this year\" --forecast \"d<[2019]\" bal Expenses --depth 2")
      ("networth" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 ^assets ^liabilities"))))
   :mode "\\.dat\\'"
+  :config
+  (add-hook 'ledger-mode-hook
+            (lambda ()
+              (setq-local tab-always-indent 'complete)
+              (setq-local completion-cycle-threshold t)
+              (setq-local ledger-complete-in-steps t)))
   )
 
 (use-package whole-line-or-region

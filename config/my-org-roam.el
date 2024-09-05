@@ -13,7 +13,7 @@
       '(("d" "default" entry
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n\n* Plans for the day\n* Notes"))))
+                            "#+title: %<%Y-%m-%d>\n\n* Pre-lunch\n* Post-lunch\n* Evening\n* Notes"))))
   (org-roam-completion-everywhere t)
   (completion-ignore-case t)
   (org-roam-file-exclude-regexp "logseq/")
@@ -43,7 +43,7 @@
       :if-new
       (file+head "pages/work/${title}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Work")
       :immediate-finish t
-      :unnarrowed t)
+      :unnarrowed t)     
      ))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -85,14 +85,16 @@
                                                   '(:immediate-finish t)))))
     (apply #'org-roam-node-insert args)))
 
-(defun my/org-roam-filter-by-tag (tag-name)
+(defun my/org-roam-filter-by-tags (tag-names)
+  "Return a filter function that matches any node with one of the TAG-NAMES."
   (lambda (node)
-    (member tag-name (org-roam-node-tags node))))
+    (let ((tags (org-roam-node-tags node)))
+      (seq-some (lambda (tag) (member tag tag-names)) tags))))
 
 (defun my/org-roam-list-notes-by-tag (tag-name)
   (mapcar #'org-roam-node-file
           (seq-filter
-           (my/org-roam-filter-by-tag tag-name)
+           (my/org-roam-filter-by-tags '(tag-name))
            (org-roam-node-list))))
 
 
@@ -118,9 +120,7 @@ capture was not aborted."
   (org-roam-node-find
    nil
    nil
-   (or
-    (my/org-roam-filter-by-tag "Work")
-    (my/org-roam-filter-by-tag "Project"))
+   (my/org-roam-filter-by-tags '("Work" "Project"))
    ;; :templates
    ;; '(("p" "project" plain "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
    ;;    :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")
@@ -137,7 +137,7 @@ capture was not aborted."
   (org-roam-node-find
    nil
    nil
-   (my/org-roam-filter-by-tag "Reference")
+   (my/org-roam-filter-by-tags '("Reference"))
    ))
 
 ;; Brain dump inside inbox
@@ -156,9 +156,8 @@ capture was not aborted."
   ;; Capture the new task, creating the project file if necessary
   (org-roam-capture- :node (org-roam-node-read
                             nil
-                            (or
-			     (my/org-roam-filter-by-tag "Work")
-			     (my/org-roam-filter-by-tag "Project")))))
+			     (my/org-roam-filter-by-tags '("Work" "Project")))))
+
 
 ;; Copy tasks marked as done to daily journal
 (defun my/org-roam-copy-todo-to-today ()
@@ -186,7 +185,7 @@ capture was not aborted."
                  (my/org-roam-copy-todo-to-today))
     ))
 
-;; Thanks to madnificent - https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html
+;; Thanks to madnificent - https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html 
 ;; Build org-agenda dynamically by finding files that have TODOs
 ;; Not usng the org-todos-keywords as I have the shortcuts in the description there.
 (defvar my/org-agenda--todo-keyword-regex

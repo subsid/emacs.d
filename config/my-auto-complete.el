@@ -30,6 +30,7 @@
   :ensure t
   :config
   (global-set-key (kbd "C-x b") 'consult-buffer)
+  (global-set-key (kbd "C-c l") 'consult-line)
   (global-set-key (kbd "C-c r") #'my/consult-ripgrep-in-directory)
   (global-set-key (kbd "C-c f") #'my/consult-find-in-subdirectories)
 )
