@@ -144,7 +144,7 @@ capture was not aborted."
 (defun my/org-roam-capture-inbox ()
   (interactive)
   (org-roam-capture- :node (org-roam-node-create)
-                     :templates '(("i" "inbox" plain "* %?"
+                     :templates '(("i" "inbox" plain "* TODO %?"
                                   :if-new (file+head "pages/Inbox.org" "#+title: Inbox\n\n")))))
 
 ;; Add tasks to specific projects
@@ -156,8 +156,9 @@ capture was not aborted."
   ;; Capture the new task, creating the project file if necessary
   (org-roam-capture- :node (org-roam-node-read
                             nil
-			     (my/org-roam-filter-by-tags '("Work" "Project")))))
-
+                            (my/org-roam-filter-by-tags '("Project")))
+     :templates '(("p" "project" plain "\n* TODO %?"
+		   :if-new (file+head "pages/project/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")))))
 
 ;; Copy tasks marked as done to daily journal
 (defun my/org-roam-copy-todo-to-today ()
