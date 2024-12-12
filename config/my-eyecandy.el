@@ -16,6 +16,13 @@
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
+  ;; Not using these themes currently
+  ;; (load-theme 'doom-zenburn t)
+  )
+
+(use-package zenburn-theme
+  :ensure t
+  :config
   (load-theme 'zenburn t))
 
 ;; Show parentheses

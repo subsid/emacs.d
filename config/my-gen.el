@@ -12,20 +12,6 @@
       (exec-path-from-shell-initialize))
     ))
 
-; (use-package yaml-mode
-;   :ensure t)
-
-(use-package nlinum 
-  :ensure t
-  :config
-  (progn
-    ;; Preset width nlinum
-    (add-hook 'nlinum-mode-hook
-	      (lambda ()
-		(setq nlinum--width
-		      (length (number-to-string
-			       (count-lines (point-min) (point-max)))))))))
-
 (use-package beacon
   :ensure t
   :config
