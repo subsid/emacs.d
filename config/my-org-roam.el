@@ -8,12 +8,12 @@
   :demand t  ;; Ensure org-roam is loaded by default
   :custom
   (org-roam-directory (concat home "/Dropbox/notes/org_roam_v2"))
-  (org-roam-dailies-directory "journals/")
-  (org-roam-dailies-capture-templates
-      '(("d" "default" entry
-         "* %?"
-         :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n\n* Pre-lunch\n* Post-lunch\n* Evening\n* Notes"))))
+;;  (org-roam-dailies-directory "journals/")
+  ;; (org-roam-dailies-capture-templates
+  ;;     '(("d" "default" entry
+  ;;        "* %?"
+  ;;        :target (file+head "%<%Y-%m-%d>.org"
+  ;;                           "#+title: %<%Y-%m-%d>\n\n* Pre-lunch\n* Post-lunch\n* Evening\n* Notes"))))
   (org-roam-completion-everywhere t)
   (completion-ignore-case t)
   (org-roam-file-exclude-regexp "logseq/")
@@ -55,13 +55,14 @@
          ("C-c n b" . my/org-roam-capture-inbox)
          :map org-mode-map
          ("C-M-i" . completion-at-point)
-         :map org-roam-dailies-map
-         ("Y" . org-roam-dailies-capture-yesterday)
-         ("T" . org-roam-dailies-capture-tomorrow))
+;         :map org-roam-dailies-map
+;         ("Y" . org-roam-dailies-capture-yesterday)
+					;         ("T" . org-roam-dailies-capture-tomorrow)
+  )
   :bind-keymap
-  ("C-c n d" . org-roam-dailies-map)
+;  ("C-c n d" . org-roam-dailies-map)
   :config
-  (require 'org-roam-dailies) ;; Ensure the keymap is available
+;  (require 'org-roam-dailies) ;; Ensure the keymap is available
   (org-roam-db-autosync-enable))
 
 ;; Use node type to show type of zettel
@@ -161,30 +162,30 @@ capture was not aborted."
 		   :if-new (file+head "pages/project/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")))))
 
 ;; Copy tasks marked as done to daily journal
-(defun my/org-roam-copy-todo-to-today ()
-  (interactive)
-  (let ((org-refile-keep t) ;; Set this to nil to delete the original!
-        (org-roam-dailies-capture-templates
-          '(("t" "tasks" entry "%?"
-             :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n" ("Tasks")))))
-        (org-after-refile-insert-hook #'save-buffer)
-        today-file
-        pos)
-    (save-window-excursion
-      (org-roam-dailies--capture (current-time) t)
-      (setq today-file (buffer-file-name))
-      (setq pos (point)))
+;; (defun my/org-roam-copy-todo-to-today ()
+;;   (interactive)
+;;   (let ((org-refile-keep t) ;; Set this to nil to delete the original!
+;;         (org-roam-dailies-capture-templates
+;;           '(("t" "tasks" entry "%?"
+;;              :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n" ("Tasks")))))
+;;         (org-after-refile-insert-hook #'save-buffer)
+;;         today-file
+;;         pos)
+;;     (save-window-excursion
+;;       (org-roam-dailies--capture (current-time) t)
+;;       (setq today-file (buffer-file-name))
+;;       (setq pos (point)))
 
-    ;; Only refile if the target file is different than the current file
-    (unless (equal (file-truename today-file)
-                   (file-truename (buffer-file-name)))
-      (org-refile nil nil (list "Tasks" today-file nil pos)))))
+;;     ;; Only refile if the target file is different than the current file
+;;     (unless (equal (file-truename today-file)
+;;                    (file-truename (buffer-file-name)))
+;;       (org-refile nil nil (list "Tasks" today-file nil pos)))))
 
-(add-to-list 'org-after-todo-state-change-hook
-             (lambda ()
-               (when (equal org-state "DONE")
-                 (my/org-roam-copy-todo-to-today))
-    ))
+;; (add-to-list 'org-after-todo-state-change-hook
+;;              (lambda ()
+;;                (when (equal org-state "DONE")
+;;                  (my/org-roam-copy-todo-to-today))
+;;     ))
 
 ;; Thanks to madnificent - https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html 
 ;; Build org-agenda dynamically by finding files that have TODOs
