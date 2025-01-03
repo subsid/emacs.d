@@ -11,6 +11,10 @@
 (set-fringe-mode 2)
 (global-display-line-numbers-mode 1)
 
+;; Initialize emacs scratch with org mode
+(setq initial-major-mode 'org-mode)
+(setq initial-scratch-message "#+TITLE: Scratch\n\n")
+
 ;; Disable UI dialogs
 (setq use-dialog-box nil)
 
