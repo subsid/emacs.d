@@ -25,6 +25,7 @@
   (setq ledger-clear-whole-transactions 1)
   (setq ledger-accounts-file (expand-file-name "~/Dropbox/notes/finance/accounts.dat"))
   (setq ledger-init-file-name (expand-file-name "~/Dropbox/notes/finance/.ledgerrc"))
+  (setq ledger-binary-path (expand-file-name "~/.local/bin/ledger"))
   (setq ledger-complete-in-steps t)
   :custom
   (ledger-reports

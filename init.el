@@ -54,9 +54,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("4990532659bb6a285fee01ede3dfa1b1bdf302c5c3c8de9fad9b6bc63a9252f7" default))
- '(ledger-accounts-file "/home/ssubramaniyam/Dropbox/notes/finance/accounts.dat" t)
+ '(ledger-accounts-file "/home/ssubramaniyam/Dropbox/notes/finance/accounts.dat")
  '(ledger-reports
-   '(("yearly-expenses" "ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
+   '(("yearly-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
      ("liabilities-reimbursements" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal Liabilities --depth 2")
      ("bal" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2")
      ("monthly-expenses" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Taxes and Expenses")
@@ -68,11 +68,11 @@
      ("investments" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:Schwab:Brokerage Assets:Investments")
      ("revenue" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal -p \"this year\" --depth 2 Revenues")
      ("investment-portfolio" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --percent --market --depth 3 Assets:Bank Assets:Investments")
-     ("yearly-budget-all" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\"  --depth 2 -X $ --add-budget not Expenses:Taxes and not Expenses:Benefits and Expenses")
+     ("yearly-budget-all" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\"  --depth 2 --add-budget not Expenses:Taxes and not Expenses:Benefits and Expenses -X $")
      ("revenue-nonsalary" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 3 not Revenues:.*:Paycheck and Revenues")
      ("revenue-minus-taxes" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 Revenues Expenses:Taxes:")
      ("bank-bals" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo")
-     ("yearly-holiday" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2024")
+     ("yearly-holiday" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2025")
      ("benefits" "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal -p \"this year\" --depth 4 Expenses:Benefits")))
  '(org-agenda-custom-commands
    '(("x" "daily status - what is happening this week"
