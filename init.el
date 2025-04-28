@@ -119,10 +119,10 @@
      "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106010312-taxes.org"
      "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
  '(package-selected-packages
-   '(ledger-mode 0blayout ox-reveal consult zoom-window use-package
-		 undo-tree org-superstar org-roam-ui nlinum
-		 expand-region exec-path-from-shell doom-themes
-		 company beacon ace-window))
+   '(0blayout ace-window beacon company consult doom-themes
+	      exec-path-from-shell expand-region ledger-mode nlinum
+	      org-roam-ui org-superstar ox-reveal undo-tree
+	      use-package zoom-window))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
