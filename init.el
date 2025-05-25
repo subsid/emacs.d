@@ -23,7 +23,6 @@
 (require 'use-package)
 (require 'my-gen)
 (require 'my-global)
-(require 'my-blog)
 ;; (require 'my-mac-clipboard-seperation)
 ;; (require 'my-projects)
 ;;(require 'my-evil)
@@ -56,10 +55,10 @@
  '(custom-safe-themes
    '("4990532659bb6a285fee01ede3dfa1b1bdf302c5c3c8de9fad9b6bc63a9252f7"
      default))
- '(ledger-accounts-file "/home/ssubramaniyam/Dropbox/notes/finance/accounts.dat" t)
+ '(ledger-accounts-file "/home/ssubramaniyam/Dropbox/notes/finance/accounts.dat")
  '(ledger-reports
    '(("monthly-budget"
-      "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" '(Expenses:Phone|Expenses:Personal:Sports|Expenses:Personal:Family|Expenses:Personal|Expenses:Groceries|Expenses:Utilities|Expenses:House)' and not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' -X $")
+      "/home/ssubramaniyam/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
      ("yearly-expenses"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
      ("liabilities-reimbursements"
@@ -69,7 +68,7 @@
      ("monthly-expenses"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this month\" reg not Expenses:Taxes and Expenses")
      ("monthly-include-unbudgeted"
-      "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget --add-budget -p \"this month\" '(Expenses:Phone|Expenses:Personal:Sports|Expenses:Personal:Family|Expenses:Personal|Expenses:Groceries|Expenses:Utilities|Expenses:House)' and not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' -X $")
+      "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" --add-budget not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
      ("yearly-only-budget"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this year\" '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' -X $")
      ("creditcard"
@@ -120,10 +119,10 @@
      "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106010312-taxes.org"
      "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
  '(package-selected-packages
-   '(ace-window beacon company consult doom-themes exec-path-from-shell
-		expand-region ledger-mode nlinum orderless org-roam-ui
-		org-static-blog org-superstar ox-reveal undo-tree
-		vertico whole-line-or-region zenburn-theme zoom-window))
+   '(0blayout ace-window beacon company consult doom-themes
+	      exec-path-from-shell expand-region ledger-mode nlinum
+	      org-roam-ui org-superstar ox-reveal undo-tree
+	      use-package zoom-window))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
