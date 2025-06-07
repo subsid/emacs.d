@@ -34,9 +34,9 @@
       (file+head "pages/reference/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Reference")
       :immediate-finish t
       :unnarrowed t)
-     ("a" "article" plain "\n%?\n\n* Related Zettels"
+     ("a" "article" plain "\n%?\n\n* Related Zettels   :noexport:"
       :if-new
-      (file+head "pages/article/${title}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Article")
+      (file+head "pages/article/${title}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Article\n#+tags: notitle\n#+export_file_name: ${title}\n#+date: <%Y%m%d>\n\n")
       :immediate-finish t
       :unnarrowed t)
      ("w" "work" plain "\n%?\n\n* Related Zettels"
@@ -51,6 +51,7 @@
          ("C-c n I" . org-roam-node-insert-immediate)
          ("C-c n p" . my/org-roam-find-project)
          ("C-c n r" . my/org-roam-find-reference)
+         ("C-c n a" . my/org-roam-find-article)
          ("C-c n t" . my/org-roam-capture-task)
          ("C-c n b" . my/org-roam-capture-inbox)
          :map org-mode-map
@@ -127,6 +128,20 @@ capture was not aborted."
    ;;    :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")
    ;;    :unnarrowed t))
    ))
+
+(defun my/org-roam-find-article ()
+  (interactive)
+  ;; Add the project file to the agenda after capture is finished
+  (add-hook 'org-capture-after-finalize-hook #'my/org-roam-project-finalize-hook)
+
+  ;; Select a project file to open, creating it if necessary
+  ;; TODO Custom templates seems broken... So it will show all templates.
+  (org-roam-node-find
+   nil
+   nil
+   (my/org-roam-filter-by-tags '("Article"))
+   )
+)
 
 (defun my/org-roam-find-reference ()
   (interactive)
