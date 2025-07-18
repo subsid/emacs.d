@@ -88,7 +88,7 @@
      ("revenue-minus-taxes"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 Revenues Expenses:Taxes:")
      ("bank-bals"
-      "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo")
+      "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo Assets:Giftcard")
      ("yearly-holiday"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2025")
      ("benefits"
