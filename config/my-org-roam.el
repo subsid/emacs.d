@@ -8,6 +8,9 @@
   :demand t  ;; Ensure org-roam is loaded by default
   :custom
   (org-roam-directory (concat home "/Dropbox/notes/org_roam_v2"))
+  ;; Post emacs 30.2+ - the sqlite lib does't support ~ in paths.
+  ;; See https://github.com/syl20bnr/spacemacs/issues/16014
+  (org-roam-db-location (expand-file-name (locate-user-emacs-file "org-roam.db")))
 ;;  (org-roam-dailies-directory "journals/")
   ;; (org-roam-dailies-capture-templates
   ;;     '(("d" "default" entry
