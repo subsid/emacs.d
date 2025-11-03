@@ -57,7 +57,9 @@
      default))
  '(ledger-accounts-file "/home/ssubramaniyam/Dropbox/notes/finance/accounts.dat")
  '(ledger-reports
-   '(("monthly-budget"
+   '(("bank-bals"
+      "/home/ssubramaniyam/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo Assets:Giftcard")
+     ("monthly-budget"
       "/home/ssubramaniyam/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
      ("yearly-expenses"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
@@ -87,8 +89,6 @@
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 3 not Revenues:.*:Paycheck and Revenues")
      ("revenue-minus-taxes"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 2 Revenues Expenses:Taxes:")
-     ("bank-bals"
-      "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo Assets:Giftcard")
      ("yearly-holiday"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal --depth 5 Expenses:Holiday:2025")
      ("benefits"
