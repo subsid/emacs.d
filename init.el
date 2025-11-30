@@ -58,9 +58,9 @@
  '(ledger-accounts-file "/home/sidsub/Dropbox/notes/finance/accounts.dat")
  '(ledger-reports
    '(("bank-bals"
-      "/home/sidsub/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo Assets:Giftcard")
+      "%(binary) [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo Assets:Giftcard")
      ("monthly-budget"
-      "/home/sidsub/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
+      "%(binary) [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
      ("yearly-expenses"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
      ("liabilities-reimbursements"
