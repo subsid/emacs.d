@@ -55,12 +55,12 @@
  '(custom-safe-themes
    '("4990532659bb6a285fee01ede3dfa1b1bdf302c5c3c8de9fad9b6bc63a9252f7"
      default))
- '(ledger-accounts-file "/home/ssubramaniyam/Dropbox/notes/finance/accounts.dat")
+ '(ledger-accounts-file "/home/sidsub/Dropbox/notes/finance/accounts.dat")
  '(ledger-reports
    '(("bank-bals"
-      "/home/ssubramaniyam/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo Assets:Giftcard")
+      "/home/sidsub/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat bal --flat Assets:Bank:* Assets:Investments:Fixed:Cash:* Assets:Venmo Assets:Giftcard")
      ("monthly-budget"
-      "/home/ssubramaniyam/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
+      "/home/sidsub/.local/bin/ledger [[ledger-mode-flags]] -f ~/Dropbox/notes/finance/ledger.dat budget -p \"this month\" not '(Expenses:Holiday|Expenses:Urgent|Expenses:Purchases|Expenses:Personal:Learning|Expenses:CreditCard|Expenses:Personal:Memberships|Expenses:Govt:USA:Taxes:Turbotax|Expenses:Giveback)' and Expenses -X $")
      ("yearly-expenses"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat -p \"this year\" reg Expenses")
      ("liabilities-reimbursements"
@@ -108,21 +108,17 @@
       nil)))
  '(org-agenda-files
    '("~/workspace/subsid.github.io/content/posts/2019-02-20-sed-rename.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230120234155-linux_hacks.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230110743-wedding.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163349-tasks.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221229153746-karpathy_videos.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106090140-12in23.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230163215-emacs.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230110003719-dad_visa.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20221230162940-chores.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230106010312-taxes.org"
-     "/home/ssubramaniyam/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
- '(package-selected-packages
-   '(ace-window beacon company consult doom-themes exec-path-from-shell
-		expand-region ledger-mode orderless org-roam
-		org-superstar ox-reveal sqlite3 undo-tree vertico
-		whole-line-or-region zenburn-theme zoom-window))
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20230120234155-linux_hacks.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20221230110743-wedding.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20221230163349-tasks.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20221229153746-karpathy_videos.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20230106090140-12in23.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20221230163215-emacs.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20230110003719-dad_visa.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20221230162940-chores.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20230106010312-taxes.org"
+     "/home/sidsub/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
+ '(package-selected-packages nil)
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

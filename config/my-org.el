@@ -123,10 +123,10 @@
 (use-package ox-reveal
   :ensure t
   :config
-  (setq org-reveal-root "/home/ssubramaniyam/workspace/reveal.js")
+  (setq org-reveal-root "/home/sidsub/workspace/reveal.js")
   (setq org-reveal-title-slide nil)
   ;; http://rwx.io/posts/org-export-configurations/
-  (defvar org-export-output-directory-prefix "/home/ssubramaniyam/Dropbox/notes/exports/export_" "prefix of directory used for org-mode export")
+  (defvar org-export-output-directory-prefix "/home/sidsub/Dropbox/notes/exports/export_" "prefix of directory used for org-mode export")
   (defadvice org-export-output-file-name (before org-add-export-dir activate)
       "Modifies org-export to place exported files in a different directory"
       (when (not pub-dir)
