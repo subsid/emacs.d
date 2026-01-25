@@ -23,7 +23,7 @@
   (org-roam-capture-templates
    '(
      ("m" "main" plain
-      "\n%?\n\n* Related Zettels"
+      "\n%?\n\n* Related Zettels    :noexport:"
       :immediate-finish t
       :if-new (file+head "pages/main/%<%Y%m%d%H%M%S>-${slug}.org"
                          "#+title: ${title}\n#+category: ${title}\n#+filetags: Main")
@@ -32,12 +32,12 @@
       :if-new (file+head "pages/project/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Project")
       :immediate-finish t
       :unnarrowed t)
-     ("r" "reference" plain "\n%?\n\n* Related Zettels"
+     ("r" "reference" plain "\n%?\n\n* Related Zettels    :noexport:"
       :if-new
       (file+head "pages/reference/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Reference")
       :immediate-finish t
       :unnarrowed t)
-     ("a" "article" plain "\n%?\n\n* Related Zettels   :noexport:"
+     ("a" "article" plain "\n%?\n\n* Related Zettels    :noexport:"
       :if-new
       (file+head "pages/article/${title}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: Article\n#+tags: notitle\n#+export_file_name: ${title}\n#+date: <%Y%m%d>\n\n")
       :immediate-finish t

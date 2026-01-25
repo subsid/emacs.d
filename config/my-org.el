@@ -22,6 +22,7 @@
 ;;   (setq org-journal-dir (concat org-directory "/journal"))
   (add-to-list 'org-modules 'org-crypt)
 
+  
   (setq org-agenda-show-future-repeats 'next)
   (setq org-export-coding-system 'utf-8)
   (setq org-export-allow-bind-keywords 1)
@@ -50,6 +51,7 @@
   ;; Either the Key ID or set to nil to use symmetric encryption.
   (setq org-crypt-key "141FB487B03C0219")
   (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
   (setq auto-save-default nil)
   ;;
   (setq org-clock-persist 'history)
@@ -83,14 +85,19 @@
       ((agenda ""
 	       ((org-agenda-prefix-format " %i %-12:c%?-12t% s %?e ")
 		(org-agenda-skip-function
-		 '(org-agenda-skip-entry-if 'todo
-					    '("DOING")))))
+		 '(or (org-agenda-skip-entry-if 'todo '("DOING"))
+		      (and (member "noagenda" (org-get-tags))
+			   (point-max)))
+		 )
+		))
        (tags "TODO=\"DOING\"" nil)
-   ;;    (tags "TODO=\"TODO\"+SCHEDULED=\"\"" nil))
-      (tags "TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\"" nil))
+       (tags
+	"TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\""
+	nil))
       nil nil)
      ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
       ((org-agenda-view-columns-initially t)))))
+  
   
 
   ;; Prevents src code-blocks from indenting at the start.

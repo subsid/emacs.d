@@ -94,18 +94,21 @@
      ("benefits"
       "%(binary) -f ~/Dropbox/notes/finance/ledger.dat bal -p \"this year\" --depth 4 Expenses:Benefits")))
  '(org-agenda-custom-commands
-   '(("x" "daily status - what is happening this week"
+   '(("x" "daily status"
       ((agenda ""
 	       ((org-agenda-prefix-format " %i %-12:c%?-12t% s %?e ")
 		(org-agenda-skip-function
-		 '(org-agenda-skip-entry-if 'todo '("DOING")))))
-       (tags "TODO=\"DOING\"" nil))
-      nil)
+		 '(or (org-agenda-skip-entry-if 'todo '("DOING"))
+		      (and (member "noagenda" (org-get-tags))
+			   (point-max))))))
+       (tags "TODO=\"DOING\"" nil)
+       (tags
+	"TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\""
+	((org-agenda-skip-function
+	  '(and (member "noagenda" (org-get-tags)) (point-max))))))
+      nil nil)
      ("l" "Tasks closed in last week" tags "CLOSED>=\"<-1w>\""
-      ((org-agenda-view-columns-initially t)))
-     ("t" "Unplanned TODOs   " tags-todo
-      "TODO=\"TODO\"-CATEGORY=\"Chores\"+DEADLINE=\"\"+SCHEDULED=\"\""
-      nil)))
+      ((org-agenda-view-columns-initially t)))))
  '(org-agenda-files
    '("~/workspace/subsid.github.io/content/posts/2019-02-20-sed-rename.org"
      "/home/sidsub/Dropbox/notes/org_roam/pages/20230120234155-linux_hacks.org"
@@ -118,7 +121,11 @@
      "/home/sidsub/Dropbox/notes/org_roam/pages/20221230162940-chores.org"
      "/home/sidsub/Dropbox/notes/org_roam/pages/20230106010312-taxes.org"
      "/home/sidsub/Dropbox/notes/org_roam/pages/20230101115035-elisp.org"))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(ace-window beacon company consult doom-themes exec-path-from-shell
+		expand-region ledger-mode orderless org-roam
+		org-roam-ui org-superstar ox-reveal undo-tree vertico
+		whole-line-or-region zenburn-theme zoom-window))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
