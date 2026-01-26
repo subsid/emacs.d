@@ -37,7 +37,7 @@
   ;; 	  ("j"
   ;; 	   "Journal entry"
   ;; 	   plain
-  ;; 	   (file+olp+datetree capture-journal-location)
+nn  ;; 	   (file+olp+datetree capture-journal-location)
   ;; 	   "[%<%H:%M>] %?")
   ;; 	  ))
 
@@ -157,6 +157,27 @@
 ;;       (org-previous-item)
 ;;     (error (org-previous-visible-heading 1))))
 ;; (define-key org-mode-map (kbd "C-c C-p") #'my-org/previous-entry-or-previous-visible-header)
+
+
+;; Make C-u C-c C-o open link in same window
+(defadvice org-open-at-point (around org-open-at-point-same-window activate)
+  "Open link in the same window when called with universal argument."
+  (let ((old-org-link-frame-setup org-link-frame-setup))
+    (if current-prefix-arg
+        ;; If universal argument is given (C-u), open in current window
+        (setq org-link-frame-setup '((file . find-file)
+                                     (external . find-file)
+                                     (custom-id . find-file)
+                                     (default . find-file)))
+      ;; Otherwise, open in other window (same frame)
+      (setq org-link-frame-setup '((file . find-file-other-window)
+                                   (external . find-file-other-window)
+                                   (custom-id . find-file-other-window)
+                                   (default . find-file-other-window))))
+    ad-do-it
+    ;; Restore the original value after the function call
+    (setq org-link-frame-setup old-org-link-frame-setup)))
+
 
 (provide 'my-org)
 
