@@ -37,7 +37,7 @@
   ;; 	  ("j"
   ;; 	   "Journal entry"
   ;; 	   plain
-nn  ;; 	   (file+olp+datetree capture-journal-location)
+  ;; 	   (file+olp+datetree capture-journal-location)
   ;; 	   "[%<%H:%M>] %?")
   ;; 	  ))
 
